@@ -1,0 +1,12 @@
+[{
+  "modid": "stardewmod",
+  "name": "Stardew Valley Mod",
+  "description": "",
+  "version": "1.0.0.0",
+  "mcversion": "1.15.2",
+  "logoFile": "logo.png",
+  "url": "minecraftforge.net/",
+  "updateJSON": "minecraftforge.net/versions.json",
+  "authorList": ["PenWallet", "Ryu", "Kanna"],
+  "credits": "I'd like to thank my future cat"
+}]

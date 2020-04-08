@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": { "item": "stardewmod:copperore" },
+  "result": { "item": "stardewmod:copperingot" },
+  "experience": 0.5,
+  "cookingtime": 50
+}
