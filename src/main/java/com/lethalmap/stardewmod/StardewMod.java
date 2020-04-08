@@ -2,7 +2,6 @@ package com.lethalmap.stardewmod;
 
 import com.lethalmap.stardewmod.client.renders.EntitiesRegistry;
 import com.lethalmap.stardewmod.common.EntitiesList;
-import com.lethalmap.stardewmod.common.StardewModItemGroup;
 import com.lethalmap.stardewmod.common.blocks.BlockList;
 import com.lethalmap.stardewmod.common.blocks.CopperOre;
 import com.lethalmap.stardewmod.common.config.Config;
@@ -10,15 +9,16 @@ import com.lethalmap.stardewmod.common.items.ArmorTiers;
 import com.lethalmap.stardewmod.common.items.ToolTiers;
 import com.lethalmap.stardewmod.common.items.ItemList;
 import com.lethalmap.stardewmod.common.world.OreGeneration;
-import com.mojang.datafixers.kinds.Const;
 import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityType;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.storage.loot.LootEntry;
+import net.minecraft.world.storage.loot.LootPool;
+import net.minecraft.world.storage.loot.TableLootEntry;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
@@ -82,6 +82,13 @@ public class StardewMod
         EntitiesRegistry.registryEntityRenders();
     }
 
+    @SubscribeEvent
+    public void lootLoad(LootTableLoadEvent evt) {
+        if (evt.getName().toString().equals("minecraft:chests/buried_treasure")) {
+            evt.getTable().addPool(LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(Constants.MODID,"inject/buried_treasure"))).build());
+        }
+    }
+
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
         // some example code to dispatch IMC to another mod
@@ -122,15 +129,15 @@ public class StardewMod
             LOGGER.info("HELLO from Item");
 
             itemRegistryEvent.getRegistry().registerAll(
-                    ItemList.copperingot_item = new Item(new Item.Properties().group(Constants.SMITEMGROUP)).setRegistryName(new ResourceLocation(Constants.MODID, Constants.COPPERINGOT)),
+                    ItemList.copperingot = new Item(new Item.Properties().group(Constants.SMITEMGROUP)).setRegistryName(new ResourceLocation(Constants.MODID, Constants.COPPERINGOT)),
 
-                    ItemList.copperore_block = new BlockItem(BlockList.copperore_block, new Item.Properties().group(Constants.SMITEMGROUP)).setRegistryName(Constants.COPPERORE),
+                    ItemList.copperore = new BlockItem(BlockList.copperore_block, new Item.Properties().group(Constants.SMITEMGROUP)).setRegistryName(Constants.COPPERORE),
                     ItemList.icon = new Item(new Item.Properties()).setRegistryName(new ResourceLocation(Constants.MODID, Constants.ICON)),
-                    ItemList.copperaxe_tool = new AxeItem(ToolTiers.COPPER, -1.0f, 6.0f, new Item.Properties().group(Constants.SMITEMGROUP)).setRegistryName(new ResourceLocation(Constants.MODID, Constants.COPPERAXE)),
-                    ItemList.copperpickaxe_tool = new PickaxeItem(ToolTiers.COPPER, 0, 6.0f, new Item.Properties().group(Constants.SMITEMGROUP)).setRegistryName(new ResourceLocation(Constants.MODID, Constants.COPPERPICKAXE)),
-                    ItemList.copperhoe_tool = new HoeItem(ToolTiers.COPPER, 6.0f, new Item.Properties().group(Constants.SMITEMGROUP)).setRegistryName(new ResourceLocation(Constants.MODID, Constants.COPPERHOE)),
+                    ItemList.copperaxe = new AxeItem(ToolTiers.COPPER, -1.0f, 6.0f, new Item.Properties().group(Constants.SMITEMGROUP)).setRegistryName(new ResourceLocation(Constants.MODID, Constants.COPPERAXE)),
+                    ItemList.copperpickaxe = new PickaxeItem(ToolTiers.COPPER, 0, 6.0f, new Item.Properties().group(Constants.SMITEMGROUP)).setRegistryName(new ResourceLocation(Constants.MODID, Constants.COPPERPICKAXE)),
+                    ItemList.copperhoe = new HoeItem(ToolTiers.COPPER, 6.0f, new Item.Properties().group(Constants.SMITEMGROUP)).setRegistryName(new ResourceLocation(Constants.MODID, Constants.COPPERHOE)),
                     ItemList.coppernugget = new Item(new Item.Properties().group(Constants.SMITEMGROUP)).setRegistryName(new ResourceLocation(Constants.MODID, Constants.COPPERNUGGET)),
-                    ItemList.combatboots_armor = new ArmorItem(ArmorTiers.COMBATBOOTS, EquipmentSlotType.FEET, new Item.Properties().group(Constants.SMITEMGROUP)).setRegistryName(new ResourceLocation(Constants.MODID, Constants.COMBATBOOTS)),
+                    ItemList.combatboots = new ArmorItem(ArmorTiers.COMBATBOOTS, EquipmentSlotType.FEET, new Item.Properties().group(Constants.SMITEMGROUP)).setRegistryName(new ResourceLocation(Constants.MODID, Constants.COMBATBOOTS)),
                     ItemList.templarblade = new SwordItem(ToolTiers.GENERICSWORD, 6,3f, new Item.Properties().group(Constants.SMITEMGROUP)).setRegistryName(new ResourceLocation(Constants.MODID, Constants.TEMPLARBLADE))
             );
 
