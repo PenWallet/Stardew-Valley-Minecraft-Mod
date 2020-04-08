@@ -5,16 +5,13 @@ import com.lethalmap.stardewmod.common.EntitiesList;
 import com.lethalmap.stardewmod.common.blocks.BlockList;
 import com.lethalmap.stardewmod.common.blocks.CopperOre;
 import com.lethalmap.stardewmod.common.config.Config;
-import com.lethalmap.stardewmod.common.items.ArmorTiers;
-import com.lethalmap.stardewmod.common.items.ToolTiers;
-import com.lethalmap.stardewmod.common.items.ItemList;
+import com.lethalmap.stardewmod.common.items.*;
 import com.lethalmap.stardewmod.common.world.OreGeneration;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.storage.loot.LootEntry;
 import net.minecraft.world.storage.loot.LootPool;
 import net.minecraft.world.storage.loot.TableLootEntry;
 import net.minecraftforge.common.MinecraftForge;
@@ -129,16 +126,16 @@ public class StardewMod
             LOGGER.info("HELLO from Item");
 
             itemRegistryEvent.getRegistry().registerAll(
-                    ItemList.copperingot = new Item(new Item.Properties().group(Constants.SMITEMGROUP)).setRegistryName(new ResourceLocation(Constants.MODID, Constants.COPPERINGOT)),
+                    ItemList.copperingot = new CopperIngot(),
 
-                    ItemList.copperore = new BlockItem(BlockList.copperore_block, new Item.Properties().group(Constants.SMITEMGROUP)).setRegistryName(Constants.COPPERORE),
+                    ItemList.copperore = new com.lethalmap.stardewmod.common.items.CopperOre(),
                     ItemList.icon = new Item(new Item.Properties()).setRegistryName(new ResourceLocation(Constants.MODID, Constants.ICON)),
-                    ItemList.copperaxe = new AxeItem(ToolTiers.COPPER, -1.0f, 6.0f, new Item.Properties().group(Constants.SMITEMGROUP)).setRegistryName(new ResourceLocation(Constants.MODID, Constants.COPPERAXE)),
-                    ItemList.copperpickaxe = new PickaxeItem(ToolTiers.COPPER, 0, 6.0f, new Item.Properties().group(Constants.SMITEMGROUP)).setRegistryName(new ResourceLocation(Constants.MODID, Constants.COPPERPICKAXE)),
-                    ItemList.copperhoe = new HoeItem(ToolTiers.COPPER, 6.0f, new Item.Properties().group(Constants.SMITEMGROUP)).setRegistryName(new ResourceLocation(Constants.MODID, Constants.COPPERHOE)),
-                    ItemList.coppernugget = new Item(new Item.Properties().group(Constants.SMITEMGROUP)).setRegistryName(new ResourceLocation(Constants.MODID, Constants.COPPERNUGGET)),
-                    ItemList.combatboots = new ArmorItem(ArmorTiers.COMBATBOOTS, EquipmentSlotType.FEET, new Item.Properties().group(Constants.SMITEMGROUP)).setRegistryName(new ResourceLocation(Constants.MODID, Constants.COMBATBOOTS)),
-                    ItemList.templarblade = new SwordItem(ToolTiers.GENERICSWORD, 6,3f, new Item.Properties().group(Constants.SMITEMGROUP)).setRegistryName(new ResourceLocation(Constants.MODID, Constants.TEMPLARBLADE))
+                    ItemList.copperaxe = new CopperAxe(),
+                    ItemList.copperpickaxe = new CopperPickaxe(),
+                    ItemList.copperhoe = new CopperHoe(),
+                    ItemList.combatboots = new CombatBoots(),
+                    ItemList.templarblade = new TemplarBlade()
+                    ItemList.coppernugget = new CopperNugget(),
             );
 
             EntitiesList.registerEntitySpawnEggs(itemRegistryEvent);
@@ -154,6 +151,15 @@ public class StardewMod
             );
 
             EntitiesList.registerEntityWorldSpawns();
+        }
+    }
+
+    @SubscribeEvent
+    public void lootLoad(LootTableLoadEvent evt) {
+        if (evt.getName().toString().equals("minecraft:chests/buried_treasure")) {
+            evt.getTable().addPool(LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(Constants.MODID,"inject/buried_treasure"))).build());
+        } else if (evt.getName().toString().equals("minecraft:chests/desert_pyramid")) {
+            evt.getTable().addPool(LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(Constants.MODID,"inject/buried_treasure"))).build());
         }
     }
 }
