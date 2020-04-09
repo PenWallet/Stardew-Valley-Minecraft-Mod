@@ -24,10 +24,17 @@
   "item.stardewmod.lavakatana": "Lava Katana",
   "item.stardewmod.galaxysword": "Galaxy Sword",
   "item.stardewmod.carvingknife": "Carving Knife",
+  "item.stardewmod.garlic": "Garlic",
   "item.stardewmod.garlicseeds": "Garlic Seeds",
+  "item.stardewmod.bluejazz": "Blue Jazz",
+  "item.stardewmod.bluejazzseeds": "Blue Jazz Seeds",
+  "item.stardewmod.cauliflower": "Cauliflower",
+  "item.stardewmod.cauliflowerseeds": "Cauliflower Seeds",
 
   "block.stardewmod.copperore": "Copper Ore",
   "block.stardewmod.garlic": "Garlic",
+  "block.stardewmod.bluejazz": "Blue Jazz",
+  "block.stardewmod.cauliflower": "Cauliflower",
 
   "itemGroup.stardewmoditemgroup": "Stardew Mod",
   "itemGroup.stardewmodfooditemgroup": "Stardew Mod Food",

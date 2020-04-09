@@ -1,6 +1,6 @@
 {
-  "parent": "block/crop",
+  "parent": "block/cross",
   "textures": {
-    "crop": "stardewmod:block/garlic_stage3"
+    "cross": "stardewmod:block/garlic_stage3"
   }
 }

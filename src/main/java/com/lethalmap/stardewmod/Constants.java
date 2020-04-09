@@ -46,5 +46,9 @@ public class Constants {
     public static final String ICON = "icon";
     public static final String GARLIC = "garlic";
     public static final String GARLICSEEDS = "garlicseeds";
+    public static final String BLUEJAZZ = "bluejazz";
+    public static final String BLUEJAZZSEEDS = "bluejazzseeds";
+    public static final String CAULIFLOWER = "cauliflower";
+    public static final String CAULIFLOWERSEEDS = "cauliflowerseeds";
 
 }

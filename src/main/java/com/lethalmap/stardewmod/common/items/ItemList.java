@@ -3,10 +3,9 @@ package com.lethalmap.stardewmod.common.items;
 import net.minecraft.item.Item;
 
 public class ItemList {
+
     //Items
     public static Item copperingot;
-    public static Item garlic;
-    public static Item garlicseeds;
 
     //Blocks
     public static Item copperore;
@@ -47,6 +46,51 @@ public class ItemList {
     //Spawn Eggs
     public static Item iridiumbat_egg;
     public static Item coppernugget;
+
     //Icono
     public static Item icon;
+
+
+    //Foods
+    public static Item garlic;
+    public static Item coffeebean;
+    public static Item bluejazz;
+    public static Item cauliflower;
+
+    //Seeds
+    public static Item bluejazzseeds;
+    public static Item cauliflowerseeds;
+    public static Item garlicseeds;
+    public static Item beanstarter;
+    public static Item kaleseeds;
+    public static Item parsnipseeds;
+    public static Item rhubarbseeds;
+    public static Item strawberryseeds;
+    public static Item tulipbulb;
+    public static Item riceshoot;
+    public static Item blueberryseeds;
+    public static Item cornseeds;
+    public static Item hopsstarter;
+    public static Item pepperseeds;
+    public static Item melonseeds;
+    public static Item poppyseeds;
+    public static Item radishseeds;
+    public static Item redcabbageseeds;
+    public static Item starfruitseeds;
+    public static Item spangleseeds;
+    public static Item tomatoseeds;
+    public static Item amaranthseeds;
+    public static Item artichokeseeds;
+    public static Item beetseeds;
+    public static Item bokchoyseeds;
+    public static Item cranberryseeds;
+    public static Item eggplantseeds;
+    public static Item fairyseeds;
+    public static Item grapestarter;
+    public static Item yamseeds;
+    public static Item ancientseeds;
+    public static Item cactusseeds;
+    public static Item mixedseeds;
+    public static Item rareseed;
+    public static Item teasapling;
 }

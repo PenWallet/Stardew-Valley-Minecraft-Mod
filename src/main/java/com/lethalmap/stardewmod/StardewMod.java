@@ -2,16 +2,13 @@ package com.lethalmap.stardewmod;
 
 import com.lethalmap.stardewmod.client.renders.EntitiesRegistry;
 import com.lethalmap.stardewmod.common.EntitiesList;
-import com.lethalmap.stardewmod.common.blocks.BlockList;
-import com.lethalmap.stardewmod.common.blocks.CopperOre;
-import com.lethalmap.stardewmod.common.blocks.GarlicBlock;
+import com.lethalmap.stardewmod.common.blocks.*;
 import com.lethalmap.stardewmod.common.config.Config;
 import com.lethalmap.stardewmod.common.items.*;
 import com.lethalmap.stardewmod.common.items.dagger.CarvingKnife;
+import com.lethalmap.stardewmod.common.items.foods.*;
 import com.lethalmap.stardewmod.common.items.swords.*;
 import com.lethalmap.stardewmod.common.items.armors.CombatBoots;
-import com.lethalmap.stardewmod.common.items.foods.Garlic;
-import com.lethalmap.stardewmod.common.items.foods.GarlicSeeds;
 import com.lethalmap.stardewmod.common.items.ores.CopperIngot;
 import com.lethalmap.stardewmod.common.items.ores.CopperNugget;
 import com.lethalmap.stardewmod.common.items.swords.*;
@@ -88,6 +85,8 @@ public class StardewMod {
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
 
         RenderTypeLookup.setRenderLayer(BlockList.garlic, RenderType.func_228643_e_());
+        RenderTypeLookup.setRenderLayer(BlockList.bluejazz, RenderType.func_228643_e_());
+        RenderTypeLookup.setRenderLayer(BlockList.cauliflower, RenderType.func_228643_e_());
         EntitiesRegistry.registryEntityRenders();
     }
 
@@ -155,7 +154,9 @@ public class StardewMod {
 
             blockRegistryEvent.getRegistry().registerAll(
                     BlockList.copperore = new CopperOre(),
-                    BlockList.garlic = new GarlicBlock()
+                    BlockList.garlic = new GarlicBlock(),
+                    BlockList.bluejazz = new BlueJazzBlock(),
+                    BlockList.cauliflower = new CauliflowerBlock()
             );
         }
 
@@ -196,7 +197,11 @@ public class StardewMod {
                     ItemList.coppernugget = new CopperNugget(),
                     ItemList.garlic = new Garlic(),
                     ItemList.carvingknife = new CarvingKnife(),
-                    ItemList.garlicseeds = new GarlicSeeds()
+                    ItemList.garlicseeds = new GarlicSeeds(),
+                    ItemList.bluejazzseeds = new BlueJazzSeeds(),
+                    ItemList.cauliflowerseeds = new CauliflowerSeeds(),
+                    ItemList.bluejazz = new BlueJazz(),
+                    ItemList.cauliflower = new Cauliflower()
             );
 
             EntitiesList.registerEntitySpawnEggs(itemRegistryEvent);

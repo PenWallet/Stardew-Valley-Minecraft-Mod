@@ -1,0 +1,6 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "stardewmod:block/cauliflower_stage5"
+  }
+}
