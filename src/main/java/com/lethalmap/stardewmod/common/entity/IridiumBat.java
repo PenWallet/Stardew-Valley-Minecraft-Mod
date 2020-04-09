@@ -112,10 +112,11 @@ public class IridiumBat extends BatEntity
 
     }
 
+    //TODO: Cambiar de nuevo cuando se vuelva a tocar el puto murciélago
     @Override
     public boolean canSpawn(IWorld worldIn, SpawnReason spawnReasonIn) {
-        if(spawnReasonIn != SpawnReason.NATURAL || !(worldIn.canBlockSeeSky(this.getPosition()) && this.func_226278_cu_() < 55))
-            return true;
+        /*if(spawnReasonIn != SpawnReason.NATURAL || !(worldIn.canBlockSeeSky(this.getPosition()) && this.func_226278_cu_() < 55))
+            return true;*/
 
         return false;
     }

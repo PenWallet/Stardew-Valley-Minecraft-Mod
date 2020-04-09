@@ -7,6 +7,15 @@ import com.lethalmap.stardewmod.common.blocks.CopperOre;
 import com.lethalmap.stardewmod.common.blocks.GarlicBlock;
 import com.lethalmap.stardewmod.common.config.Config;
 import com.lethalmap.stardewmod.common.items.*;
+import com.lethalmap.stardewmod.common.items.armors.CombatBoots;
+import com.lethalmap.stardewmod.common.items.foods.Garlic;
+import com.lethalmap.stardewmod.common.items.foods.GarlicSeeds;
+import com.lethalmap.stardewmod.common.items.ores.CopperIngot;
+import com.lethalmap.stardewmod.common.items.ores.CopperNugget;
+import com.lethalmap.stardewmod.common.items.swords.*;
+import com.lethalmap.stardewmod.common.items.tools.CopperAxe;
+import com.lethalmap.stardewmod.common.items.tools.CopperHoe;
+import com.lethalmap.stardewmod.common.items.tools.CopperPickaxe;
 import com.lethalmap.stardewmod.common.world.OreGeneration;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderType;
@@ -87,7 +96,7 @@ public class StardewMod {
         } else if (evt.getName().toString().equals("minecraft:gameplay/fishing")) {
             evt.getTable().addPool(LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(Constants.MODID, "inject/fishing"))).build());
         } else if (evt.getName().toString().equals("minecraft:chests/simpledungeon")) {
-
+            //LootTables.
         }
     }
 
@@ -136,7 +145,7 @@ public class StardewMod {
             itemRegistryEvent.getRegistry().registerAll(
                     ItemList.copperingot = new CopperIngot(),
 
-                    ItemList.copperore = new com.lethalmap.stardewmod.common.items.CopperOre(),
+                    ItemList.copperore = new com.lethalmap.stardewmod.common.items.ores.CopperOre(),
                     ItemList.icon = new Item(new Item.Properties()).setRegistryName(new ResourceLocation(Constants.MODID, Constants.ICON)),
                     ItemList.copperaxe = new CopperAxe(),
                     ItemList.copperpickaxe = new CopperPickaxe(),
@@ -162,8 +171,9 @@ public class StardewMod {
                     ItemList.steelfalchion = new SteelFalchion(),
                     ItemList.lavakatana = new LavaKatana(),
                     ItemList.galaxysword = new GalaxySword(),
-                    ItemList.coppernugget = new CopperNugget()
-                    ItemList.garlic = new Garlic()
+                    ItemList.coppernugget = new CopperNugget(),
+                    ItemList.garlic = new Garlic(),
+                    ItemList.garlicseeds = new GarlicSeeds()
             );
 
             EntitiesList.registerEntitySpawnEggs(itemRegistryEvent);

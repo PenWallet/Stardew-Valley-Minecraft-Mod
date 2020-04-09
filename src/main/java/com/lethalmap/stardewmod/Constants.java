@@ -1,11 +1,15 @@
 package com.lethalmap.stardewmod;
 
-import com.lethalmap.stardewmod.common.StardewModItemGroup;
+import com.lethalmap.stardewmod.common.itemgroups.StardewModFoodItemGroup;
+import com.lethalmap.stardewmod.common.itemgroups.StardewModItemGroup;
+import com.lethalmap.stardewmod.common.itemgroups.StardewModSeedsItemGroup;
 import net.minecraft.item.ItemGroup;
 
 public class Constants {
     public static final String MODID = "stardewmod";
     public static final ItemGroup SMITEMGROUP = new StardewModItemGroup();
+    public static final ItemGroup SMFOODITEMGROUP = new StardewModFoodItemGroup();
+    public static final ItemGroup SMSEEDSITEMGROUP = new StardewModSeedsItemGroup();
 
     //IDs objects
     public static final String COPPERORE = "copperore";
@@ -39,5 +43,6 @@ public class Constants {
     public static final String IRIDIUMBAT_EGG = "iridiumbat_egg";
     public static final String ICON = "icon";
     public static final String GARLIC = "garlic";
+    public static final String GARLICSEEDS = "garlicseeds";
 
 }
