@@ -5,10 +5,12 @@ import com.lethalmap.stardewmod.common.EntitiesList;
 import com.lethalmap.stardewmod.common.blocks.BlockList;
 import com.lethalmap.stardewmod.common.blocks.CopperOre;
 import com.lethalmap.stardewmod.common.blocks.GarlicBlock;
+import com.lethalmap.stardewmod.common.blocks.IronOre;
 import com.lethalmap.stardewmod.common.blocks.Worms;
 import com.lethalmap.stardewmod.common.config.Config;
 import com.lethalmap.stardewmod.common.items.*;
 import com.lethalmap.stardewmod.common.items.dagger.CarvingKnife;
+import com.lethalmap.stardewmod.common.items.ores.IronNugget;
 import com.lethalmap.stardewmod.common.items.swords.*;
 import com.lethalmap.stardewmod.common.items.armors.CombatBoots;
 import com.lethalmap.stardewmod.common.items.foods.Garlic;
@@ -159,6 +161,7 @@ public class StardewMod {
                     BlockList.copperore = new CopperOre(),
                     BlockList.garlic = new GarlicBlock(),
                     BlockList.worms = new Worms()
+                    BlockList.ironore = new IronOre()
             );
         }
 
@@ -171,6 +174,7 @@ public class StardewMod {
                     ItemList.copperingot = new CopperIngot(),
 
                     ItemList.copperore = new com.lethalmap.stardewmod.common.items.ores.CopperOre(),
+                    ItemList.ironore = new com.lethalmap.stardewmod.common.items.ores.IronOre(),
                     ItemList.icon = new Item(new Item.Properties()).setRegistryName(new ResourceLocation(Constants.MODID, Constants.ICON)),
                     ItemList.copperaxe = new CopperAxe(),
                     ItemList.copperpickaxe = new CopperPickaxe(),
@@ -197,6 +201,7 @@ public class StardewMod {
                     ItemList.lavakatana = new LavaKatana(),
                     ItemList.galaxysword = new GalaxySword(),
                     ItemList.coppernugget = new CopperNugget(),
+                    ItemList.ironnugget = new IronNugget(),
                     ItemList.garlic = new Garlic(),
                     ItemList.carvingknife = new CarvingKnife(),
                     ItemList.worms = new com.lethalmap.stardewmod.common.items.ores.Worms(),

@@ -7,10 +7,13 @@ public class ItemList {
     public static Item copperingot;
     public static Item garlic;
     public static Item garlicseeds;
+    public static Item coppernugget;
+    public static Item ironnugget;
     public static Item worms;
 
     //Blocks
     public static Item copperore;
+    public static Item ironore;
 
     //Tools
     public static Item copperpickaxe;
@@ -47,7 +50,6 @@ public class ItemList {
 
     //Spawn Eggs
     public static Item iridiumbat_egg;
-    public static Item coppernugget;
     //Icono
     public static Item icon;
 }

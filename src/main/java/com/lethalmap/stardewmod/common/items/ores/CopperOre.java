@@ -11,3 +11,4 @@ public class CopperOre extends BlockItem {
         setRegistryName(Constants.MODID, Constants.COPPERORE);
     }
 }
+
