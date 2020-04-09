@@ -158,9 +158,8 @@ public class StardewMod {
                     BlockList.copperore = new CopperOre(),
                     BlockList.garlic = new GarlicBlock(),
                     BlockList.bluejazz = new BlueJazzBlock(),
-                    BlockList.garlic = new GarlicBlock(),
-                    BlockList.cauliflower = new CauliflowerBlock()
-                    BlockList.worms = new Worms()
+                    BlockList.cauliflower = new CauliflowerBlock(),
+                    BlockList.worms = new Worms(),
                     BlockList.ironore = new IronOre()
             );
         }

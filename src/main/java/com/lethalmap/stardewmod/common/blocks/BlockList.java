@@ -7,12 +7,12 @@ public class BlockList {
     public static Block nuggetfurnace;
     public static Block worms;
     public static Block copperore;
-    public static Block garlic;
     public static Block ironore;
     
     //Crops
     public static Block bluejazz;
     public static Block cauliflower;
+    public static Block garlic;
     public static Block coffeebean;
     public static Block beanstarter;
     public static Block kale;
