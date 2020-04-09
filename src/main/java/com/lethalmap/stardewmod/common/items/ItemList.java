@@ -7,6 +7,7 @@ public class ItemList {
     public static Item copperingot;
     public static Item garlic;
     public static Item garlicseeds;
+    public static Item worms;
 
     //Blocks
     public static Item copperore;

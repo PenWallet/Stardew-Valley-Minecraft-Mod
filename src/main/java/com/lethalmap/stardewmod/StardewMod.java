@@ -5,6 +5,7 @@ import com.lethalmap.stardewmod.common.EntitiesList;
 import com.lethalmap.stardewmod.common.blocks.BlockList;
 import com.lethalmap.stardewmod.common.blocks.CopperOre;
 import com.lethalmap.stardewmod.common.blocks.GarlicBlock;
+import com.lethalmap.stardewmod.common.blocks.Worms;
 import com.lethalmap.stardewmod.common.config.Config;
 import com.lethalmap.stardewmod.common.items.*;
 import com.lethalmap.stardewmod.common.items.dagger.CarvingKnife;
@@ -88,6 +89,7 @@ public class StardewMod {
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
 
         RenderTypeLookup.setRenderLayer(BlockList.garlic, RenderType.func_228643_e_());
+        RenderTypeLookup.setRenderLayer(BlockList.worms, RenderType.func_228643_e_());
         EntitiesRegistry.registryEntityRenders();
     }
 
@@ -155,7 +157,8 @@ public class StardewMod {
 
             blockRegistryEvent.getRegistry().registerAll(
                     BlockList.copperore = new CopperOre(),
-                    BlockList.garlic = new GarlicBlock()
+                    BlockList.garlic = new GarlicBlock(),
+                    BlockList.worms = new Worms()
             );
         }
 
@@ -196,6 +199,7 @@ public class StardewMod {
                     ItemList.coppernugget = new CopperNugget(),
                     ItemList.garlic = new Garlic(),
                     ItemList.carvingknife = new CarvingKnife(),
+                    ItemList.worms = new com.lethalmap.stardewmod.common.items.ores.Worms(),
                     ItemList.garlicseeds = new GarlicSeeds()
             );
 
