@@ -32,9 +32,11 @@
   "item.stardewmod.cauliflowerseeds": "Cauliflower Seeds",
 
   "block.stardewmod.copperore": "Copper Ore",
+  "block.stardewmod.worms": "Worms",
   "block.stardewmod.garlic": "Garlic",
   "block.stardewmod.bluejazz": "Blue Jazz",
   "block.stardewmod.cauliflower": "Cauliflower",
+  "block.stardewmod.ironore": "Iron Ore",
 
   "itemGroup.stardewmoditemgroup": "Stardew Mod",
   "itemGroup.stardewmodfooditemgroup": "Stardew Mod Food",
@@ -46,5 +48,6 @@
 
   "entity.stardewmod.iridiumbat": "Iridium Bat",
 
-  "item.stardewmod.coppernugget": "Copper Nugget"
+  "item.stardewmod.coppernugget": "Copper Nugget",
+  "item.stardewmod.ironnugget": "Iron Nugget"
 }

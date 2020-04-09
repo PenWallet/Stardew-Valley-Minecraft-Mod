@@ -7,6 +7,7 @@ import com.lethalmap.stardewmod.common.config.Config;
 import com.lethalmap.stardewmod.common.items.*;
 import com.lethalmap.stardewmod.common.items.dagger.CarvingKnife;
 import com.lethalmap.stardewmod.common.items.foods.*;
+import com.lethalmap.stardewmod.common.items.ores.IronNugget;
 import com.lethalmap.stardewmod.common.items.swords.*;
 import com.lethalmap.stardewmod.common.items.armors.CombatBoots;
 import com.lethalmap.stardewmod.common.items.ores.CopperIngot;
@@ -87,6 +88,7 @@ public class StardewMod {
         RenderTypeLookup.setRenderLayer(BlockList.garlic, RenderType.func_228643_e_());
         RenderTypeLookup.setRenderLayer(BlockList.bluejazz, RenderType.func_228643_e_());
         RenderTypeLookup.setRenderLayer(BlockList.cauliflower, RenderType.func_228643_e_());
+        RenderTypeLookup.setRenderLayer(BlockList.worms, RenderType.func_228643_e_());
         EntitiesRegistry.registryEntityRenders();
     }
 
@@ -156,7 +158,10 @@ public class StardewMod {
                     BlockList.copperore = new CopperOre(),
                     BlockList.garlic = new GarlicBlock(),
                     BlockList.bluejazz = new BlueJazzBlock(),
+                    BlockList.garlic = new GarlicBlock(),
                     BlockList.cauliflower = new CauliflowerBlock()
+                    BlockList.worms = new Worms()
+                    BlockList.ironore = new IronOre()
             );
         }
 
@@ -169,6 +174,7 @@ public class StardewMod {
                     ItemList.copperingot = new CopperIngot(),
 
                     ItemList.copperore = new com.lethalmap.stardewmod.common.items.ores.CopperOre(),
+                    ItemList.ironore = new com.lethalmap.stardewmod.common.items.ores.IronOre(),
                     ItemList.icon = new Item(new Item.Properties()).setRegistryName(new ResourceLocation(Constants.MODID, Constants.ICON)),
                     ItemList.copperaxe = new CopperAxe(),
                     ItemList.copperpickaxe = new CopperPickaxe(),
@@ -195,12 +201,14 @@ public class StardewMod {
                     ItemList.lavakatana = new LavaKatana(),
                     ItemList.galaxysword = new GalaxySword(),
                     ItemList.coppernugget = new CopperNugget(),
+                    ItemList.ironnugget = new IronNugget(),
                     ItemList.garlic = new Garlic(),
                     ItemList.carvingknife = new CarvingKnife(),
                     ItemList.garlicseeds = new GarlicSeeds(),
                     ItemList.bluejazzseeds = new BlueJazzSeeds(),
                     ItemList.cauliflowerseeds = new CauliflowerSeeds(),
                     ItemList.bluejazz = new BlueJazz(),
+                    ItemList.worms = new com.lethalmap.stardewmod.common.items.ores.Worms(),
                     ItemList.cauliflower = new Cauliflower()
             );
 

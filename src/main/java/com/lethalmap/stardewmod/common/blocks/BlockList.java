@@ -4,9 +4,11 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
 public class BlockList {
+    public static Block nuggetfurnace;
     public static Block worms;
     public static Block copperore;
     public static Block garlic;
+    public static Block ironore;
     
     //Crops
     public static Block bluejazz;
