@@ -38,8 +38,7 @@ import java.util.stream.Collectors;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("stardewmod")
-public class StardewMod
-{
+public class StardewMod {
     // Directly reference a log4j logger.
     public static StardewMod instance;
     private static final Logger LOGGER = LogManager.getLogger(Constants.MODID);
@@ -66,8 +65,7 @@ public class StardewMod
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    private void setup(final FMLCommonSetupEvent event)
-    {
+    private void setup(final FMLCommonSetupEvent event) {
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
 
@@ -85,23 +83,29 @@ public class StardewMod
     @SubscribeEvent
     public void lootLoad(LootTableLoadEvent evt) {
         if (evt.getName().toString().equals("minecraft:chests/buried_treasure")) {
-            evt.getTable().addPool(LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(Constants.MODID,"inject/buried_treasure"))).build());
+            evt.getTable().addPool(LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(Constants.MODID, "inject/buried_treasure"))).build());
+        } else if (evt.getName().toString().equals("minecraft:gameplay/fishing")) {
+            evt.getTable().addPool(LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(Constants.MODID, "inject/fishing"))).build());
+        } else if (evt.getName().toString().equals("minecraft:chests/simpledungeon")) {
+
         }
     }
 
-    private void enqueueIMC(final InterModEnqueueEvent event)
-    {
+    private void enqueueIMC(final InterModEnqueueEvent event) {
         // some example code to dispatch IMC to another mod
-        InterModComms.sendTo("examplemod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
+        InterModComms.sendTo("examplemod", "helloworld", () -> {
+            LOGGER.info("Hello world from the MDK");
+            return "Hello world";
+        });
     }
 
-    private void processIMC(final InterModProcessEvent event)
-    {
+    private void processIMC(final InterModProcessEvent event) {
         // some example code to receive and process InterModComms from other mods
         LOGGER.info("Got IMC {}", event.getIMCStream().
-                map(m->m.getMessageSupplier().get()).
+                map(m -> m.getMessageSupplier().get()).
                 collect(Collectors.toList()));
     }
+
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
@@ -111,7 +115,7 @@ public class StardewMod
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
     // Event bus for receiving Registry Events)
-    @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
+    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
@@ -139,7 +143,26 @@ public class StardewMod
                     ItemList.copperhoe = new CopperHoe(),
                     ItemList.combatboots = new CombatBoots(),
                     ItemList.templarblade = new TemplarBlade(),
-                    ItemList.coppernugget = new CopperNugget(),
+                    ItemList.rustysword = new RustySword(),
+                    ItemList.woodenblade = new WoodenBlade(),
+                    ItemList.steelsmallsword = new SteelSmallSword(),
+                    ItemList.silversaber = new SilverSaber(),
+                    ItemList.piratesword = new PirateSword(),
+                    ItemList.cutlass = new Cutlass(),
+                    ItemList.ironedge = new IronEdge(),
+                    ItemList.forestsword = new ForestSword(),
+                    ItemList.holyblade = new HolyBlade(),
+                    ItemList.insecthead = new InsectHead(),
+                    ItemList.claymore = new Claymore(),
+                    ItemList.darksword = new DarkSword(),
+                    ItemList.neptuneglaive = new NeptuneGlaive(),
+                    ItemList.temperedbroadsword = new TemperedBroadSword(),
+                    ItemList.obsidianedge = new ObsidianEdge(),
+                    ItemList.bonesword = new BoneSword(),
+                    ItemList.steelfalchion = new SteelFalchion(),
+                    ItemList.lavakatana = new LavaKatana(),
+                    ItemList.galaxysword = new GalaxySword(),
+                    ItemList.coppernugget = new CopperNugget()
                     ItemList.garlic = new Garlic()
             );
 
