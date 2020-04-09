@@ -1,6 +1,7 @@
-package com.lethalmap.stardewmod.common.items;
+package com.lethalmap.stardewmod.common.items.swords;
 
 import com.lethalmap.stardewmod.Constants;
+import com.lethalmap.stardewmod.common.items.ToolTiers;
 import net.minecraft.item.SwordItem;
 
 public class RustySword extends SwordItem {

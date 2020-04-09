@@ -1,0 +1,20 @@
+{
+  "pools": [
+    {
+      "name": "main",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "tag",
+          "name": "stardewmod:drop_swords",
+          "weight": 3,
+          "expand": true
+        },
+        {
+          "type": "empty",
+          "weight": 97
+        }
+      ]
+    }
+  ]
+}

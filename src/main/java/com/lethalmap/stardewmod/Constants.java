@@ -9,6 +9,7 @@ public class Constants {
 
     //IDs objects
     public static final String COPPERORE = "copperore";
+    public static final String WORMS = "worms";
     public static final String COPPERINGOT = "copperingot";
     public static final String COPPERNUGGET = "coppernugget";
     public static final String COPPERAXE = "copperaxe";
@@ -35,6 +36,7 @@ public class Constants {
     public static final String STEELFALCHION = "steelfalchion";
     public static final String LAVAKATANA = "lavakatana";
     public static final String GALAXYSWORD = "galaxysword";
+    public static final String CARVINGKNIFE = "carvingknife";
     public static final String IRIDIUMBAT = "iridiumbat";
     public static final String IRIDIUMBAT_EGG = "iridiumbat_egg";
     public static final String ICON = "icon";

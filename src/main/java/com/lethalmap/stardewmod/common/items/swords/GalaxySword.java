@@ -1,11 +1,8 @@
-package com.lethalmap.stardewmod.common.items;
+package com.lethalmap.stardewmod.common.items.swords;
 
 import com.lethalmap.stardewmod.Constants;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
+import com.lethalmap.stardewmod.common.items.ToolTiers;
 import net.minecraft.item.SwordItem;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
 
 public class GalaxySword extends SwordItem {
 

@@ -6,6 +6,8 @@ import com.lethalmap.stardewmod.common.blocks.BlockList;
 import com.lethalmap.stardewmod.common.blocks.CopperOre;
 import com.lethalmap.stardewmod.common.config.Config;
 import com.lethalmap.stardewmod.common.items.*;
+import com.lethalmap.stardewmod.common.items.dagger.CarvingKnife;
+import com.lethalmap.stardewmod.common.items.swords.*;
 import com.lethalmap.stardewmod.common.world.OreGeneration;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
@@ -78,12 +80,32 @@ public class StardewMod {
 
     @SubscribeEvent
     public void lootLoad(LootTableLoadEvent evt) {
-        if (evt.getName().toString().equals("minecraft:chests/buried_treasure")) {
-            evt.getTable().addPool(LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(Constants.MODID, "inject/buried_treasure"))).build());
-        } else if (evt.getName().toString().equals("minecraft:gameplay/fishing")) {
-            evt.getTable().addPool(LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(Constants.MODID, "inject/fishing"))).build());
-        } else if (evt.getName().toString().equals("minecraft:chests/simpledungeon")) {
+        switch (evt.getName().toString()) {
+            case "minecraft:chests/buried_treasure":
+                evt.getTable().addPool(LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(Constants.MODID, "inject/buried_treasure"))).build());
+                break;
 
+            case "minecraft:gameplay/fishing":
+                evt.getTable().addPool(LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(Constants.MODID, "inject/fishing"))).build());
+                break;
+
+            case "minecraft:entities/phantom":
+                evt.getTable().addPool(LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(Constants.MODID, "inject/phantomdarksword"))).build());
+                break;
+
+            case "minecraft:entities/blaze":
+            case "minecraft:entities/zombie":
+            case "minecraft:entities/spider":
+            case "minecraft:entities/skeleton":
+            case "minecraft:entities/husk":
+            case "minecraft:entities/creeper":
+            case "minecraft:entities/slime":
+            case "minecraft:entities/vex":
+            case "minecraft:entities/ghast":
+            case "minecraft:entities/guardian":
+
+                evt.getTable().addPool(LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(Constants.MODID, "inject/mobdrops"))).build());
+                break;
         }
     }
 
@@ -157,6 +179,7 @@ public class StardewMod {
                     ItemList.steelfalchion = new SteelFalchion(),
                     ItemList.lavakatana = new LavaKatana(),
                     ItemList.galaxysword = new GalaxySword(),
+                    ItemList.carvingknife = new CarvingKnife(),
                     ItemList.coppernugget = new CopperNugget()
             );
 

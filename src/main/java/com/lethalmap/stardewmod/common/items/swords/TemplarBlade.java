@@ -1,7 +1,7 @@
-package com.lethalmap.stardewmod.common.items;
+package com.lethalmap.stardewmod.common.items.swords;
 
 import com.lethalmap.stardewmod.Constants;
-import net.minecraft.item.IItemTier;
+import com.lethalmap.stardewmod.common.items.ToolTiers;
 import net.minecraft.item.Item;
 import net.minecraft.item.SwordItem;
 
