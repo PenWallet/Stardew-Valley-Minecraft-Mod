@@ -4,12 +4,15 @@ import com.lethalmap.stardewmod.client.renders.EntitiesRegistry;
 import com.lethalmap.stardewmod.common.EntitiesList;
 import com.lethalmap.stardewmod.common.blocks.BlockList;
 import com.lethalmap.stardewmod.common.blocks.CopperOre;
+import com.lethalmap.stardewmod.common.blocks.GarlicBlock;
 import com.lethalmap.stardewmod.common.config.Config;
 import com.lethalmap.stardewmod.common.items.*;
 import com.lethalmap.stardewmod.common.items.dagger.CarvingKnife;
 import com.lethalmap.stardewmod.common.items.swords.*;
 import com.lethalmap.stardewmod.common.world.OreGeneration;
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.*;
 import net.minecraft.util.ResourceLocation;
@@ -75,6 +78,7 @@ public class StardewMod {
         // do something that can only be done on the client
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
 
+        RenderTypeLookup.setRenderLayer(BlockList.garlic, RenderType.func_228643_e_());
         EntitiesRegistry.registryEntityRenders();
     }
 
@@ -141,7 +145,8 @@ public class StardewMod {
             LOGGER.info("HELLO from Register Block");
 
             blockRegistryEvent.getRegistry().registerAll(
-                    BlockList.copperore_block = new CopperOre()
+                    BlockList.copperore = new CopperOre(),
+                    BlockList.garlic = new GarlicBlock()
             );
         }
 
@@ -181,6 +186,7 @@ public class StardewMod {
                     ItemList.galaxysword = new GalaxySword(),
                     ItemList.carvingknife = new CarvingKnife(),
                     ItemList.coppernugget = new CopperNugget()
+                    ItemList.garlic = new Garlic()
             );
 
             EntitiesList.registerEntitySpawnEggs(itemRegistryEvent);
@@ -198,6 +204,4 @@ public class StardewMod {
             EntitiesList.registerEntityWorldSpawns();
         }
     }
-
-
 }

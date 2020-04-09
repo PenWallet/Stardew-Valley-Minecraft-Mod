@@ -40,5 +40,6 @@ public class Constants {
     public static final String IRIDIUMBAT = "iridiumbat";
     public static final String IRIDIUMBAT_EGG = "iridiumbat_egg";
     public static final String ICON = "icon";
+    public static final String GARLIC = "garlic";
 
 }

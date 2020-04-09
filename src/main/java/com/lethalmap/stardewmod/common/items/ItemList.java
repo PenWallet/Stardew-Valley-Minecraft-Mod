@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 public class ItemList {
     //Items
     public static Item copperingot;
+    public static Item garlic;
 
     //Blocks
     public static Item copperore;
