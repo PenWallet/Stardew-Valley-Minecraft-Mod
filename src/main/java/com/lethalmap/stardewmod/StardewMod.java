@@ -4,12 +4,14 @@ import com.lethalmap.stardewmod.client.renders.EntitiesRegistry;
 import com.lethalmap.stardewmod.common.EntitiesList;
 import com.lethalmap.stardewmod.common.blocks.BlockList;
 import com.lethalmap.stardewmod.common.blocks.CopperOre;
+import com.lethalmap.stardewmod.common.blocks.GarlicBlock;
 import com.lethalmap.stardewmod.common.config.Config;
 import com.lethalmap.stardewmod.common.items.*;
 import com.lethalmap.stardewmod.common.world.OreGeneration;
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.entity.EntityType;
-import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.LootPool;
@@ -76,6 +78,7 @@ public class StardewMod
         // do something that can only be done on the client
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
 
+        RenderTypeLookup.setRenderLayer(BlockList.garlic, RenderType.func_228643_e_());
         EntitiesRegistry.registryEntityRenders();
     }
 
@@ -116,7 +119,8 @@ public class StardewMod
             LOGGER.info("HELLO from Register Block");
 
             blockRegistryEvent.getRegistry().registerAll(
-                    BlockList.copperore_block = new CopperOre()
+                    BlockList.copperore = new CopperOre(),
+                    BlockList.garlic = new GarlicBlock()
             );
         }
 
@@ -134,8 +138,9 @@ public class StardewMod
                     ItemList.copperpickaxe = new CopperPickaxe(),
                     ItemList.copperhoe = new CopperHoe(),
                     ItemList.combatboots = new CombatBoots(),
-                    ItemList.templarblade = new TemplarBlade()
+                    ItemList.templarblade = new TemplarBlade(),
                     ItemList.coppernugget = new CopperNugget(),
+                    ItemList.garlic = new Garlic()
             );
 
             EntitiesList.registerEntitySpawnEggs(itemRegistryEvent);
@@ -151,15 +156,6 @@ public class StardewMod
             );
 
             EntitiesList.registerEntityWorldSpawns();
-        }
-    }
-
-    @SubscribeEvent
-    public void lootLoad(LootTableLoadEvent evt) {
-        if (evt.getName().toString().equals("minecraft:chests/buried_treasure")) {
-            evt.getTable().addPool(LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(Constants.MODID,"inject/buried_treasure"))).build());
-        } else if (evt.getName().toString().equals("minecraft:chests/desert_pyramid")) {
-            evt.getTable().addPool(LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(Constants.MODID,"inject/buried_treasure"))).build());
         }
     }
 }
