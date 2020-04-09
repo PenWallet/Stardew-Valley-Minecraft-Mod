@@ -10,8 +10,13 @@
           "weight": 1
         },
         {
+          "type": "item",
+          "name": "stardewmod:piratesword",
+          "weight": 30
+        },
+        {
           "type": "empty",
-          "weight": 99
+          "weight": 69
         }
       ]
     }

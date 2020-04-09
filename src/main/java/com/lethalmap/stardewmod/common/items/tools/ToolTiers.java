@@ -7,7 +7,8 @@ import net.minecraft.item.crafting.Ingredient;
 
 public enum ToolTiers implements IItemTier {
     COPPER(4.0f, 9.0f, 200, 2, 20, ItemList.copperingot),
-    GENERICSWORD(1f,1f,1,1,20,null);
+    GENERICSWORD(1f,1f,1,1,20,null),
+    GENERICDAGGER(1f,1f,1,1,20,null);
 
     private float attackDamage, efficiency;
     private int durability, harvestLevel, enchantability;

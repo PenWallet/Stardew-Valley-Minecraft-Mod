@@ -38,6 +38,9 @@ public class ItemList {
     public static Item lavakatana;
     public static Item galaxysword;
 
+    //Daggers
+    public static Item carvingknife;
+
     //Armor
     public static Item combatboots;
 
