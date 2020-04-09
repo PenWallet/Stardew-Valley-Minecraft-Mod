@@ -1,6 +1,7 @@
 package com.lethalmap.stardewmod.common.items.tools;
 
 import com.lethalmap.stardewmod.Constants;
+import com.lethalmap.stardewmod.common.items.ToolTiers;
 import net.minecraft.item.Item;
 import net.minecraft.item.PickaxeItem;
 

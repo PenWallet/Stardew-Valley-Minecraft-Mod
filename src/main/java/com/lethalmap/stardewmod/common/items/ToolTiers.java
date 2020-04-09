@@ -1,4 +1,4 @@
-package com.lethalmap.stardewmod.common.items.tools;
+package com.lethalmap.stardewmod.common.items;
 
 import com.lethalmap.stardewmod.common.items.ItemList;
 import net.minecraft.item.IItemTier;
