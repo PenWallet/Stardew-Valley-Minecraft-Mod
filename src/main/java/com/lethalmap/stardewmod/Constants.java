@@ -91,7 +91,7 @@ public class Constants {
     public static final String BONEFLUTE = "boneflute";
     public static final String PREHISTORICHANDAXE = "prehistorichandaxe";
     public static final String DWARVISHHELM = "dwarvishhelm";
-    public static final String DWARFGADGET = "dwardgadget";
+    public static final String DWARFGADGET = "dwarfgadget";
     public static final String ANCIENTDRUM = "ancientdrum";
     public static final String GOLDENMASK = "goldenmask";
     public static final String GOLDENRELIC = "goldenrelic";
