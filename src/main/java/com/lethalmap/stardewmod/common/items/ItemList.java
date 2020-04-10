@@ -96,4 +96,48 @@ public class ItemList {
     public static Item mixedseeds;
     public static Item rareseed;
     public static Item teasapling;
+
+    //Artifacts
+    public static Item dwarfscrolli;
+    public static Item dwarfscrollii;
+    public static Item dwarfscrolliii;
+    public static Item dwarfscrolliv;
+    public static  Item chippedamphora;
+    public static  Item arrowhead;
+    public static  Item ancientdoll;
+    public static  Item elvishjewelry;
+    public static  Item chewingstick;
+    public static  Item ornamentalfan;
+    public static  Item dinosauregg;
+    public static  Item raredisc;
+    public static  Item ancientsword;
+    public static  Item rustyspoon;
+    public static  Item rustyspur;
+    public static  Item rustycog;
+    public static  Item chickenstatue;
+    public static  Item ancientseed;
+    public static  Item prehistorictool;
+    public static  Item driedstarfish;
+    public static  Item anchor;
+    public static  Item glassshards;
+    public static  Item boneflute;
+    public static  Item prehistorichandaxe;
+    public static  Item dwarvishhelm;
+    public static  Item dwarfgadget;
+    public static  Item ancientdrum;
+    public static  Item goldenmask;
+    public static  Item goldenrelic;
+    public static  Item strangedoll;
+    public static  Item strangedollpink;
+    public static  Item prehistoricscapula;
+    public static  Item prehistorictibia;
+    public static  Item prehistoricskull;
+    public static  Item skeletalhand;
+    public static  Item prehistoricrib;
+    public static  Item prehistoricvertebra;
+    public static  Item skeletaltail;
+    public static  Item nautilusfossil;
+    public static  Item amphibianfossil;
+    public static  Item palmfossil;
+    public static  Item trilobite;
 }

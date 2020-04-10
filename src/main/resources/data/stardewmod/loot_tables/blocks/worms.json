@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": {
+        "min": 1,
+        "max": 4
+      },
+      "entries": [
+        {
+          "type": "tag",
+          "name": "stardewmod:chest_swords",
+          "expand": true
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:match_tool",
+          "predicate": {
+              "item": "stardewmod:darksword"
+          }
+
+        }
+      ]
+    }
+  ]
+}

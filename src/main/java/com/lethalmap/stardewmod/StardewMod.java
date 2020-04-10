@@ -5,6 +5,7 @@ import com.lethalmap.stardewmod.common.EntitiesList;
 import com.lethalmap.stardewmod.common.blocks.*;
 import com.lethalmap.stardewmod.common.config.Config;
 import com.lethalmap.stardewmod.common.items.*;
+import com.lethalmap.stardewmod.common.items.artifacts.*;
 import com.lethalmap.stardewmod.common.items.dagger.CarvingKnife;
 import com.lethalmap.stardewmod.common.items.foods.*;
 import com.lethalmap.stardewmod.common.items.ores.IronNugget;
@@ -12,11 +13,11 @@ import com.lethalmap.stardewmod.common.items.swords.*;
 import com.lethalmap.stardewmod.common.items.armors.CombatBoots;
 import com.lethalmap.stardewmod.common.items.ores.CopperIngot;
 import com.lethalmap.stardewmod.common.items.ores.CopperNugget;
-import com.lethalmap.stardewmod.common.items.swords.*;
 import com.lethalmap.stardewmod.common.items.tools.CopperAxe;
 import com.lethalmap.stardewmod.common.items.tools.CopperHoe;
 import com.lethalmap.stardewmod.common.items.tools.CopperPickaxe;
 import com.lethalmap.stardewmod.common.world.OreGeneration;
+import com.lethalmap.stardewmod.common.world.WormGeneration;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
@@ -79,6 +80,7 @@ public class StardewMod {
         LOGGER.info("HELLO FROM PREINIT");
 
         OreGeneration.setupOreGeneration();
+        WormGeneration.WormGeneration();
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
@@ -214,8 +216,50 @@ public class StardewMod {
                     ItemList.worms = new com.lethalmap.stardewmod.common.items.ores.Worms(),
                     ItemList.cauliflower = new Cauliflower(),
                     ItemList.parsnip = new Parsnip(),
-                    ItemList.parsnipseeds = new ParsnipSeeds(),
                     ItemList.beanstarter = new BeanStarter()
+                    ItemList.parsnipseeds = new ParsnipSeeds(),
+                    ItemList.dwarfscrolli = new DwarfScrollI(),
+                    ItemList.dwarfscrollii = new DwarfScrollII(),
+                    ItemList.dwarfscrolliii = new DwarfScrollIII(),
+                    ItemList.dwarfscrolliv = new DwarfScrollIV(),
+                    ItemList.chippedamphora = new ChippedAmphora(),
+                    ItemList.arrowhead = new ArrowHead(),
+                    ItemList.ancientdoll = new AncientDoll(),
+                    ItemList.elvishjewelry = new ElvishJewelry(),
+                    ItemList.chewingstick = new ChewingStick(),
+                    ItemList.ornamentalfan = new OrnamentalFan(),
+                    ItemList.dinosauregg = new DinosaurEgg(),
+                    ItemList.raredisc = new RareDisc(),
+                    ItemList.ancientsword = new AncientSword(),
+                    ItemList.rustyspoon = new RustySpoon(),
+                    ItemList.rustyspur = new RustySpur(),
+                    ItemList.rustycog = new RustyCog(),
+                    ItemList.chickenstatue = new ChickenStatue(),
+                    ItemList.ancientseed = new AncientSeed(),
+                    ItemList.prehistorictool = new PrehistoricTool(),
+                    ItemList.driedstarfish = new DriedStarfish(),
+                    ItemList.anchor = new Anchor(),
+                    ItemList.glassshards = new GlassShards(),
+                    ItemList.boneflute = new BoneFlute(),
+                    ItemList.prehistorichandaxe = new PrehistoricHandaxe(),
+                    ItemList.dwarvishhelm = new DwarvishHelm(),
+                    ItemList.dwarfgadget = new DwarfGadget(),
+                    ItemList.ancientdrum = new AncientDrum(),
+                    ItemList.goldenmask = new GoldenMask(),
+                    ItemList.goldenrelic = new GoldenRelic(),
+                    ItemList.strangedoll = new StrangeDoll(),
+                    ItemList.strangedollpink = new StrangeDollPink(),
+                    ItemList.prehistoricscapula = new PrehistoricScapula(),
+                    ItemList.prehistorictibia = new PrehistoricTibia(),
+                    ItemList.prehistoricskull = new PrehistoricSkull(),
+                    ItemList.skeletalhand = new SkeletalHand(),
+                    ItemList.prehistoricrib = new PrehistoricRib(),
+                    ItemList.prehistoricvertebra = new PrehistoricVertebra(),
+                    ItemList.skeletaltail = new SkeletalTail(),
+                    ItemList.nautilusfossil = new NautilusFossil(),
+                    ItemList.amphibianfossil = new AmphibianFossil(),
+                    ItemList.palmfossil = new PalmFossil(),
+                    ItemList.trilobite = new Trilobite()
             );
 
             EntitiesList.registerEntitySpawnEggs(itemRegistryEvent);

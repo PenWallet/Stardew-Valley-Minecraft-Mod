@@ -54,5 +54,13 @@
   "entity.stardewmod.iridiumbat": "Iridium Bat",
 
   "item.stardewmod.coppernugget": "Copper Nugget",
-  "item.stardewmod.ironnugget": "Iron Nugget"
+  "item.stardewmod.ironnugget": "Iron Nugget",
+
+
+  "item.stardewmod.dwarfscrolli": "Dwarf Scroll I",
+  "item.stardewmod.dwarfscrollii": "Dwarf Scroll II",
+  "item.stardewmod.dwarfscrolliii": "Dwarf Scroll III",
+  "item.stardewmod.dwarfscrolliv": "Dwarf Scroll IV",
+  "item.stardewmod.chippedamphora": "Chipped Amphora",
+  "item.stardewmod.arrowhead": "Arrowhead"
 }
