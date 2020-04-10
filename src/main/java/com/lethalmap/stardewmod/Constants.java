@@ -54,5 +54,7 @@ public class Constants {
     public static final String CAULIFLOWERSEEDS = "cauliflowerseeds";
     public static final String PARSNIP = "parsnip";
     public static final String PARSNIPSEEDS = "parsnipseeds";
+    public static final String GREENBEAN = "greenbean";
+    public static final String BEANSTARTER = "beanstarter";
 
 }

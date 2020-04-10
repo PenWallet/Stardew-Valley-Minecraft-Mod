@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "half=lower": { "model": "stardewmod:block/greenbean_bottom" },
+    "half=upper":    { "model": "stardewmod:block/greenbean_top" }
+  }
+}

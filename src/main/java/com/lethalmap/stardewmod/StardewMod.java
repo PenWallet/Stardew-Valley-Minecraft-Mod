@@ -90,6 +90,7 @@ public class StardewMod {
         RenderTypeLookup.setRenderLayer(BlockList.cauliflower, RenderType.func_228643_e_());
         RenderTypeLookup.setRenderLayer(BlockList.parsnip, RenderType.func_228643_e_());
         RenderTypeLookup.setRenderLayer(BlockList.worms, RenderType.func_228643_e_());
+        RenderTypeLookup.setRenderLayer(BlockList.beanstarter, RenderType.func_228643_e_());
         EntitiesRegistry.registryEntityRenders();
     }
 
@@ -162,7 +163,8 @@ public class StardewMod {
                     BlockList.cauliflower = new CauliflowerBlock(),
                     BlockList.worms = new Worms(),
                     BlockList.ironore = new IronOre(),
-                    BlockList.parsnip = new ParsnipBlock()
+                    BlockList.parsnip = new ParsnipBlock(),
+                    BlockList.beanstarter = new GreenBeanBlock()
             );
         }
 
@@ -212,7 +214,8 @@ public class StardewMod {
                     ItemList.worms = new com.lethalmap.stardewmod.common.items.ores.Worms(),
                     ItemList.cauliflower = new Cauliflower(),
                     ItemList.parsnip = new Parsnip(),
-                    ItemList.parsnipseeds = new ParsnipSeeds()
+                    ItemList.parsnipseeds = new ParsnipSeeds(),
+                    ItemList.beanstarter = new BeanStarter()
             );
 
             EntitiesList.registerEntitySpawnEggs(itemRegistryEvent);

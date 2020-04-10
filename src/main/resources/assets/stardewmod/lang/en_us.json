@@ -32,6 +32,7 @@
   "item.stardewmod.cauliflowerseeds": "Cauliflower Seeds",
   "item.stardewmod.parsnip": "Parsnip",
   "item.stardewmod.parsnipseeds": "Parsnip Seeds",
+  "item.stardewmod.beanstarter": "Bean Starter",
 
   "block.stardewmod.copperore": "Copper Ore",
   "block.stardewmod.worms": "Worms",
@@ -40,6 +41,7 @@
   "block.stardewmod.cauliflower": "Cauliflower",
   "block.stardewmod.parsnip": "Parsnip",
   "block.stardewmod.ironore": "Iron Ore",
+  "block.stardewmod.beanstarter": "Bean Starter",
 
   "itemGroup.stardewmoditemgroup": "Stardew Mod",
   "itemGroup.stardewmodfooditemgroup": "Stardew Mod Food",
