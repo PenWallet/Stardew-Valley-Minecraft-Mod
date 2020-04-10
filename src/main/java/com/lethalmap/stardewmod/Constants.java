@@ -1,8 +1,6 @@
 package com.lethalmap.stardewmod;
 
-import com.lethalmap.stardewmod.common.itemgroups.StardewModFoodItemGroup;
-import com.lethalmap.stardewmod.common.itemgroups.StardewModItemGroup;
-import com.lethalmap.stardewmod.common.itemgroups.StardewModSeedsItemGroup;
+import com.lethalmap.stardewmod.common.itemgroups.*;
 import net.minecraft.item.ItemGroup;
 
 public class Constants {
@@ -10,6 +8,8 @@ public class Constants {
     public static final ItemGroup SMITEMGROUP = new StardewModItemGroup();
     public static final ItemGroup SMFOODITEMGROUP = new StardewModFoodItemGroup();
     public static final ItemGroup SMSEEDSITEMGROUP = new StardewModSeedsItemGroup();
+    public static final ItemGroup SMSSWORDSITEMGROUP = new StardewModSwordsItemGroup();
+    public static final ItemGroup SMSGEMSITEMGROUP = new StardewModGemsItemGroup();
 
     //IDs objects
     public static final String COPPERORE = "copperore";
@@ -108,5 +108,21 @@ public class Constants {
     public static final String AMPHIBIANFOSSIL = "amphibianfossil";
     public static final String PALMFOSSIL = "palmfossil";
     public static final String TRILOBITE = "trilobite";
+
+    //GEMS
+    public static final String SVEMERALD = "svemerald";
+    public static final String AQUAMARINE = "aquamarine";
+    public static final String RUBY = "ruby";
+    public static final String AMETHYST = "amethyst";
+    public static final String TOPAZ = "topaz";
+    public static final String JADE = "jade";
+    public static final String SVDIAMOND = "svdiamond";
+    public static final String PRISMATICSHARD = "prismaticshard";
+
+    //GEODES
+    public static final String GEODE = "geode";
+    public static final String FROZENGEODE = "frozengeode";
+    public static final String MAGMAGEODE = "magmageode";
+    public static final String OMNIGEODE = "omnigeode";
 
 }

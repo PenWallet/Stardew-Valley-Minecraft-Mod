@@ -8,6 +8,7 @@ import com.lethalmap.stardewmod.common.items.*;
 import com.lethalmap.stardewmod.common.items.artifacts.*;
 import com.lethalmap.stardewmod.common.items.dagger.CarvingKnife;
 import com.lethalmap.stardewmod.common.items.foods.*;
+import com.lethalmap.stardewmod.common.items.gems.*;
 import com.lethalmap.stardewmod.common.items.ores.IronNugget;
 import com.lethalmap.stardewmod.common.items.swords.*;
 import com.lethalmap.stardewmod.common.items.armors.CombatBoots;
@@ -258,7 +259,19 @@ public class StardewMod {
                     ItemList.nautilusfossil = new NautilusFossil(),
                     ItemList.amphibianfossil = new AmphibianFossil(),
                     ItemList.palmfossil = new PalmFossil(),
-                    ItemList.trilobite = new Trilobite()
+                    ItemList.trilobite = new Trilobite(),
+                    ItemList.svemerald = new SVEmerald(),
+                    ItemList.svdiamond = new SVDiamond(),
+                    ItemList.aquamarine = new Aquamarine(),
+                    ItemList.ruby = new Ruby(),
+                    ItemList.amethyst = new Amethyst(),
+                    ItemList.topaz = new Topaz(),
+                    ItemList.jade = new Jade(),
+                    ItemList.prismaticshard = new PrismaticShard(),
+                    ItemList.geode = new Geode(),
+                    ItemList.frozengeode = new FrozenGeode(),
+                    ItemList.magmageode = new MagmaGeode(),
+                    ItemList.omnigeode = new Omnigeode()
             );
 
             EntitiesList.registerEntitySpawnEggs(itemRegistryEvent);

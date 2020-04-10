@@ -6,7 +6,7 @@ import net.minecraft.item.SwordItem;
 
 public class SteelFalchion extends SwordItem {
     public SteelFalchion() {
-        super(ToolTiers.GENERICSWORD, 6,3f, new Properties().group(Constants.SMITEMGROUP));
+        super(ToolTiers.GENERICSWORD, 6,3f, new Properties().group(Constants.SMSSWORDSITEMGROUP));
         setRegistryName(Constants.MODID, Constants.STEELFALCHION);
     }
 }

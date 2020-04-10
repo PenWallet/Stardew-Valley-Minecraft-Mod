@@ -140,4 +140,20 @@ public class ItemList {
     public static  Item amphibianfossil;
     public static  Item palmfossil;
     public static  Item trilobite;
+
+    //Gems
+    public static Item svemerald;
+    public static Item aquamarine;
+    public static Item ruby;
+    public static Item amethyst;
+    public static Item topaz;
+    public static Item jade;
+    public static Item svdiamond;
+    public static Item prismaticshard;
+
+    //Geodes
+    public static Item geode;
+    public static Item frozengeode;
+    public static Item magmageode;
+    public static Item omnigeode;
 }
