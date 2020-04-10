@@ -2,9 +2,5 @@
   "parent": "item/handheld",
   "textures": {
     "layer0": "stardewmod:item/elvishjewelry"
-<<<<<<< HEAD
-=======
-
->>>>>>> master
   }
 }
