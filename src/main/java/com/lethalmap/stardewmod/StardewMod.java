@@ -216,7 +216,7 @@ public class StardewMod {
                     ItemList.worms = new com.lethalmap.stardewmod.common.items.ores.Worms(),
                     ItemList.cauliflower = new Cauliflower(),
                     ItemList.parsnip = new Parsnip(),
-                    ItemList.beanstarter = new BeanStarter()
+                    ItemList.beanstarter = new BeanStarter(),
                     ItemList.parsnipseeds = new ParsnipSeeds(),
                     ItemList.dwarfscrolli = new DwarfScrollI(),
                     ItemList.dwarfscrollii = new DwarfScrollII(),
