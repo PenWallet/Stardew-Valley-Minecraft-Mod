@@ -38,6 +38,14 @@ public class Constants {
     public static final String IRONAXE = "ironaxe";
     public static final String IRONHOE = "ironhoe";
     public static final String IRONPICKAXE = "ironpickaxe";
+    public static final String AMETHYSTORE = "amethystore";
+    public static final String AQUAMARINEORE = "aquamarineore";
+    public static final String EMERALDORE = "emeraldeore";
+    public static final String JADEORE = "jadeeore";
+    public static final String GEMORE = "gemore";
+    public static final String MYSTICSTONE = "mysticstone";
+    public static final String RUBYORE = "rubyore";
+    public static final String TOPAZORE = "topazore";
 
     //SWORDS
     public static final String TEMPLARBLADE = "templarblade";

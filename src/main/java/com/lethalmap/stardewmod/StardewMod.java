@@ -4,6 +4,8 @@ import com.lethalmap.stardewmod.client.ColorHandlers;
 import com.lethalmap.stardewmod.client.renders.EntitiesRegistry;
 import com.lethalmap.stardewmod.common.EntitiesList;
 import com.lethalmap.stardewmod.common.blocks.*;
+import com.lethalmap.stardewmod.common.blocks.AmethystOre;
+import com.lethalmap.stardewmod.common.blocks.AquamarineOre;
 import com.lethalmap.stardewmod.common.blocks.CopperOre;
 import com.lethalmap.stardewmod.common.blocks.GoldOre;
 import com.lethalmap.stardewmod.common.blocks.IridiumOre;
@@ -167,7 +169,9 @@ public class StardewMod {
 
             blockRegistryEvent.getRegistry().registerAll(
                     BlockList.copperore = new CopperOre(),
+                    BlockList.aquamarineore = new AquamarineOre(),
                     BlockList.goldore = new GoldOre(),
+                    BlockList.amethystore = new AmethystOre(),
                     BlockList.iridiumore = new IridiumOre(),
                     BlockList.garlic = new GarlicBlock(),
                     BlockList.bluejazz = new BlueJazzBlock(),
@@ -188,6 +192,8 @@ public class StardewMod {
                     ItemList.copperingot = new CopperIngot(),
 
                     ItemList.copperore = new com.lethalmap.stardewmod.common.items.ores.CopperOre(),
+                    ItemList.amethystore = new com.lethalmap.stardewmod.common.items.ores.AmethystOre(),
+                    ItemList.aquamarineore = new com.lethalmap.stardewmod.common.items.ores.AquamarineOre(),
                     ItemList.ironore = new com.lethalmap.stardewmod.common.items.ores.IronOre(),
                     ItemList.goldore = new com.lethalmap.stardewmod.common.items.ores.GoldOre(),
                     ItemList.iridiumore = new com.lethalmap.stardewmod.common.items.ores.IridiumOre(),

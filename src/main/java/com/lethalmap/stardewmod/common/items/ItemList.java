@@ -20,6 +20,14 @@ public class ItemList {
     public static Item ironore;
     public static Item goldore;
     public static Item iridiumore;
+    public static Item amethystore;
+    public static Item aquamarineore;
+    public static Item emeraldeore;
+    public static Item jadeeore;
+    public static Item gemore;
+    public static Item mysticstone;
+    public static Item rubyore;
+    public static Item topazore;
 
     //Tools
     public static Item copperpickaxe;
