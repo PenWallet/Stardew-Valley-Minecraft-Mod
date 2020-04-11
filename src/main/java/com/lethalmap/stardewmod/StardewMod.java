@@ -311,12 +311,11 @@ public class StardewMod {
                     ItemList.iridiumpickaxe = new IridiumPickaxe(),
                     ItemList.iridiumingot = new IridiumIngot(),
                     ItemList.goldingot = new GoldIngot(),
-                    ItemList.greenbean = new GreenBean(),
                     ItemList.coffeebean = new CoffeeBean(),
                     ItemList.kaleseeds = new KaleSeeds(),
                     ItemList.kale = new Kale(),
                     ItemList.rhubarb = new Rhubarb(),
-                    ItemList.rhubarbseeds = new RhubarbSeeds()
+                    ItemList.rhubarbseeds = new RhubarbSeeds(),
                     ItemList.backpack = new Backpack()
             );
 
