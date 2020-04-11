@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "stardewmod:icon"
+    },
+    "title": "Welcome to Stardew Valley Mod",
+    "description": "Stardew Mod achievements",
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": true,
+    "hidden": true,
+    "background": "stardewmod:textures/gui/advancements/backgrounds/stardewbackground.png"
+  },
+  "criteria": {
+    "activation": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "dimension": "minecraft:overworld"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "activation"
+    ]
+  ]
+}

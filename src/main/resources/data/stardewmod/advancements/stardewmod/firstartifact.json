@@ -1,0 +1,22 @@
+{
+  "parent": "stardewmod:stardewmod/root",
+  "display": {
+    "icon": {
+      "item": "stardewmod:worms"
+    },
+    "title": "What is this?",
+    "description": "Archeologically fantastic",
+    "show_toast": true
+  },
+  "criteria": {
+    "example": {
+      "trigger": "stardewmod:break_block",
+      "conditions": {
+        "block": "stardewmod:worms",
+        "item": {
+          "item": "stardewmod:copperhoe"
+        }
+      }
+    }
+  }
+}

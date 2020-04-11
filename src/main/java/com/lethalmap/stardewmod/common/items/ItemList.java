@@ -6,6 +6,7 @@ public class ItemList {
 
     //Items
     public static Item copperingot;
+    public static Item ironingot;
     public static Item coppernugget;
     public static Item ironnugget;
     public static Item worms;
@@ -18,6 +19,9 @@ public class ItemList {
     public static Item copperpickaxe;
     public static Item copperaxe;
     public static Item copperhoe;
+    public static Item ironpickaxe;
+    public static Item ironaxe;
+    public static Item ironhoe;
 
     //Swords
     public static Item templarblade;

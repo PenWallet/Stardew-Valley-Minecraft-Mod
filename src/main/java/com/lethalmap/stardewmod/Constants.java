@@ -15,6 +15,7 @@ public class Constants {
     public static final String COPPERORE = "copperore";
     public static final String IRONORE = "ironore";
     public static final String IRONNUGGET = "ironnugget";
+    public static final String IRONINGOT = "ironingot";
     public static final String WORMS = "worms";
     public static final String COPPERINGOT = "copperingot";
     public static final String COPPERNUGGET = "coppernugget";
@@ -22,6 +23,9 @@ public class Constants {
     public static final String COPPERHOE = "copperhoe";
     public static final String COPPERPICKAXE = "copperpickaxe";
     public static final String COMBATBOOTS = "combatboots";
+    public static final String IRONAXE = "ironaxe";
+    public static final String IRONHOE = "ironhoe";
+    public static final String IRONPICKAXE = "ironpickaxe";
 
     //SWORDS
     public static final String TEMPLARBLADE = "templarblade";
