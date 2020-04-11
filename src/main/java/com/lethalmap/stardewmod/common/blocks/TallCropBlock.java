@@ -165,7 +165,7 @@ public class TallCropBlock extends BushBlock implements IGrowable {
      * Whether this IGrowable can grow
      */
     public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
-        return !this.isMaxAge(state);
+        return !this.isMaxAge(state) || state.get(this.getAgeProperty()) == this.getMaxAge()+1;
     }
 
     public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state) {

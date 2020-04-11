@@ -278,7 +278,8 @@ public class StardewMod {
                     ItemList.ironaxe = new IronAxe(),
                     ItemList.ironhoe = new IronHoe(),
                     ItemList.ironpickaxe = new IronPickaxe(),
-                    ItemList.ironingot = new IronIngot()
+                    ItemList.ironingot = new IronIngot(),
+                    ItemList.greenbean = new GreenBean()
             );
 
             EntitiesList.registerEntitySpawnEggs(itemRegistryEvent);

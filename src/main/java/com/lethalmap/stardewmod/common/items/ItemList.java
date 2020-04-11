@@ -63,6 +63,7 @@ public class ItemList {
     public static Item bluejazz;
     public static Item cauliflower;
     public static Item parsnip;
+    public static Item greenbean;
 
     //Seeds
     public static Item bluejazzseeds;

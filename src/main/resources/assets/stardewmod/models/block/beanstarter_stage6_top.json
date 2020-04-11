@@ -1,0 +1,6 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "stardewmod:block/beanstarter_stage6_top"
+  }
+}

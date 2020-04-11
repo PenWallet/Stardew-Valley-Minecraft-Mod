@@ -11,6 +11,8 @@
     "age=4,half=lower": { "model": "stardewmod:block/beanstarter_stage4_bottom" },
     "age=4,half=upper": { "model": "stardewmod:block/beanstarter_stage4_top" },
     "age=5,half=lower": { "model": "stardewmod:block/beanstarter_stage5_bottom" },
-    "age=5,half=upper": { "model": "stardewmod:block/beanstarter_stage5_top" }
+    "age=5,half=upper": { "model": "stardewmod:block/beanstarter_stage5_top" },
+    "age=6,half=lower": { "model": "stardewmod:block/beanstarter_stage6_bottom" },
+    "age=6,half=upper": { "model": "stardewmod:block/beanstarter_stage6_top" }
   }
 }
