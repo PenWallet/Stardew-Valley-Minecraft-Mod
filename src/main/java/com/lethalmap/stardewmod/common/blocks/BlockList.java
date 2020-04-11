@@ -10,6 +10,14 @@ public class BlockList {
     public static Block ironore;
     public static Block goldore;
     public static Block iridiumore;
+    public static Block amethystore;
+    public static Block aquamarineore;
+    public static Block emeraldeore;
+    public static Block jadeeore;
+    public static Block gemore;
+    public static Block mysticstone;
+    public static Block rubyore;
+    public static Block topazore;
 
     //Crops
     public static Block bluejazz;
