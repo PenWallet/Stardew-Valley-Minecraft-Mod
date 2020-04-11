@@ -16,7 +16,7 @@ public class Worms extends FlowerBlock {
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 5.0D, 11.0D);
 
     public Worms() {
-        super(Effects.WEAKNESS,9,Block.Properties.create(Material.PLANTS).doesNotBlockMovement().hardnessAndResistance(0).sound(SoundType.PLANT));
+        super(Effects.WEAKNESS,9,Block.Properties.create(Material.PLANTS).doesNotBlockMovement().hardnessAndResistance(0).sound(SoundType.SLIME));
         setRegistryName(Constants.MODID,Constants.WORMS);
     }
 

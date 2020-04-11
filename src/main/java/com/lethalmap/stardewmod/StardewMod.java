@@ -17,6 +17,8 @@ import com.lethalmap.stardewmod.common.items.tools.CopperAxe;
 import com.lethalmap.stardewmod.common.items.tools.CopperHoe;
 import com.lethalmap.stardewmod.common.items.tools.CopperPickaxe;
 import com.lethalmap.stardewmod.common.world.OreGeneration;
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
@@ -79,7 +81,6 @@ public class StardewMod {
         LOGGER.info("HELLO FROM PREINIT");
 
         OreGeneration.setupOreGeneration();
-
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
@@ -165,7 +166,7 @@ public class StardewMod {
                     BlockList.worms = new Worms(),
                     BlockList.ironore = new IronOre(),
                     BlockList.parsnip = new ParsnipBlock(),
-                    BlockList.beanstarter = new GreenBeanBlock()
+                    BlockList.beanstarter = new BeanStarterBlock()
             );
         }
 
