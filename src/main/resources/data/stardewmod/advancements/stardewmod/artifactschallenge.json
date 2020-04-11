@@ -1,0 +1,434 @@
+{
+  "parent": "stardewmod:stardewmod/firstartifact",
+  "display": {
+    "icon": {
+      "item": "stardewmod:worms"
+    },
+    "title": "What is this?",
+    "description": "Archeologically fantastic",
+    "show_toast": true,
+    "frame": "challenge"
+  },
+  "criteria": {
+    "trigger_1": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:dwarfscrolli"
+          }
+        ]
+      }
+    },
+    "trigger_2": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:dwarfscrollii"
+          }
+        ]
+      }
+    },
+    "trigger_3": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:dwarfscrolliii"
+          }
+        ]
+      }
+    },
+    "trigger_4": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:dwarfscrolliv"
+          }
+        ]
+      }
+    },
+    "trigger_5": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:chippedamphora"
+          }
+        ]
+      }
+    },
+    "trigger_6": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:arrowhead"
+          }
+        ]
+      }
+    },
+    "trigger_7": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:ancientdoll"
+          }
+        ]
+      }
+    },
+    "trigger_8": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:elvishjewelry"
+          }
+        ]
+      }
+    },
+    "trigger_9": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:chewingstick"
+          }
+        ]
+      }
+    },
+    "trigger_10": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:ornamentalfan"
+          }
+        ]
+      }
+    },
+    "trigger_11": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:dinosauregg"
+          }
+        ]
+      }
+    },
+    "trigger_12": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:raredisc"
+          }
+        ]
+      }
+    },
+    "trigger_13": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:ancientsword"
+          }
+        ]
+      }
+    },
+    "trigger_14": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:rustyspoon"
+          }
+        ]
+      }
+    },
+    "trigger_15": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:rustyspur"
+          }
+        ]
+      }
+    },
+    "trigger_16": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:rustycog"
+          }
+        ]
+      }
+    },
+    "trigger_17": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:chickenstatue"
+          }
+        ]
+      }
+    },
+    "trigger_18": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:ancientseed"
+          }
+        ]
+      }
+    },
+    "trigger_19": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:prehistorictool"
+          }
+        ]
+      }
+    },
+    "trigger_20": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:driedstarfish"
+          }
+        ]
+      }
+    },
+    "trigger_21": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:anchor"
+          }
+        ]
+      }
+    },
+    "trigger_22": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:glassshards"
+          }
+        ]
+      }
+    },
+    "trigger_23": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:boneflute"
+          }
+        ]
+      }
+    },
+    "trigger_24": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:prehistorichandaxe"
+          }
+        ]
+      }
+    },
+    "trigger_25": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:dwarvishhelm"
+          }
+        ]
+      }
+    },
+    "trigger_26": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:dwarfgadget"
+          }
+        ]
+      }
+    },
+    "trigger_27": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:ancientdrum"
+          }
+        ]
+      }
+    },
+    "trigger_28": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:goldenmask"
+          }
+        ]
+      }
+    },
+    "trigger_29": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:goldenrelic"
+          }
+        ]
+      }
+    },
+    "trigger_30": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:strangedoll"
+          }
+        ]
+      }
+    },
+    "trigger_31": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:strangedollpink"
+          }
+        ]
+      }
+    },
+    "trigger_32": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:prehistoricscapula"
+          }
+        ]
+      }
+    },
+    "trigger_33": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:prehistorictibia"
+          }
+        ]
+      }
+    },
+    "trigger_34": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:prehistoricskull"
+          }
+        ]
+      }
+    },
+    "trigger_35": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:skeletalhand"
+          }
+        ]
+      }
+    },
+    "trigger_36": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:prehistoricrib"
+          }
+        ]
+      }
+    },
+    "trigger_37": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:prehistoricvertebra"
+          }
+        ]
+      }
+    },
+    "trigger_38": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:skeletaltail"
+          }
+        ]
+      }
+    },
+    "trigger_39": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:nautilusfossil"
+          }
+        ]
+      }
+    },
+    "trigger_40": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:amphibianfossil"
+          }
+        ]
+      }
+    },
+    "trigger_41": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:palmfossil"
+          }
+        ]
+      }
+    },
+    "trigger_42": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:trilobite"
+          }
+        ]
+      }
+    }
+  }
+}

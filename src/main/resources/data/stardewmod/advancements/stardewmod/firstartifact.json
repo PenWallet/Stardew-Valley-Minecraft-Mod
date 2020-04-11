@@ -9,14 +9,16 @@
     "show_toast": true
   },
   "criteria": {
-    "example": {
-      "trigger": "stardewmod:break_block",
+    "trigger_1": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
-        "block": "stardewmod:worms",
-        "item": {
-          "item": "stardewmod:copperhoe"
-        }
+        "items": [
+          {
+            "tag": "stardewmod:artifacts"
+          }
+        ]
       }
     }
   }
 }
+
