@@ -1,11 +1,13 @@
 package com.lethalmap.stardewmod.common.blocks;
 
+import com.lethalmap.stardewmod.common.items.ItemList;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.monster.RavagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.state.EnumProperty;
@@ -14,9 +16,9 @@ import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.state.properties.DoubleBlockHalf;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Direction;
-import net.minecraft.util.IItemProvider;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -165,6 +167,7 @@ public class TallCropBlock extends BushBlock implements IGrowable {
      * Whether this IGrowable can grow
      */
     public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
+        //state.get(this.getAgeProperty()) == this.getMaxAge()+1 used to check if the crop is in the harvested state
         return !this.isMaxAge(state) || state.get(this.getAgeProperty()) == this.getMaxAge()+1;
     }
 
@@ -179,6 +182,7 @@ public class TallCropBlock extends BushBlock implements IGrowable {
             i = j;
         }
 
+        //If player clicked the bottom half, or the top
         if(state.get(HALF) == DoubleBlockHalf.LOWER)
         {
             worldIn.setBlockState(pos, this.getStateContainer().getBaseState().with(this.getAgeProperty(), i).with(HALF, DoubleBlockHalf.LOWER), 2);
@@ -189,12 +193,6 @@ public class TallCropBlock extends BushBlock implements IGrowable {
             worldIn.setBlockState(pos, this.getStateContainer().getBaseState().with(this.getAgeProperty(), i).with(HALF, DoubleBlockHalf.UPPER), 2);
             worldIn.setBlockState(pos.down(), this.getStateContainer().getBaseState().with(this.getAgeProperty(), i).with(HALF, DoubleBlockHalf.LOWER), 2);
         }
-
-
-        /*DoublePlantBlock doubleplantblock = (DoublePlantBlock)(BlockList.beanstarter);
-        if (doubleplantblock.getDefaultState().isValidPosition(worldIn, pos) && worldIn.isAirBlock(pos.up())) {
-            doubleplantblock.placeAt(worldIn, pos, 2);
-        }*/
     }
 
 
@@ -235,19 +233,13 @@ public class TallCropBlock extends BushBlock implements IGrowable {
         BlockPos positionGround = pos.down();
         Block blockGround = worldIn.getBlockState(positionGround).getBlock();
 
+        //Used to avoid player being able to place crops on top of crops
         if(blockGround == BlockList.beanstarter && state.get(HALF) == DoubleBlockHalf.LOWER && worldIn.getBlockState(positionGround).get(HALF) == DoubleBlockHalf.UPPER)
             return false;
 
+        //isValidPositionCropsBlock checks for the light level of the block
         boolean isValidPositionCropsBlock = (worldIn.func_226659_b_(pos, 0) >= 8 || worldIn.func_226660_f_(pos));
-        return blockGround == Blocks.FARMLAND || blockGround == BlockList.beanstarter && isValidPositionCropsBlock;
-
-        /*if (state.get(HALF) != DoubleBlockHalf.UPPER) {
-            return super.isValidPosition(state, worldIn, pos) && isValidPositionCropsBlock;
-        } else {
-            BlockState blockstate = worldIn.getBlockState(pos.down());
-            if (state.getBlock() != this) return super.isValidPosition(state, worldIn, pos) && isValidPositionCropsBlock; //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
-            return blockstate.getBlock() == this && blockstate.get(HALF) == DoubleBlockHalf.LOWER && isValidPositionCropsBlock;
-        }*/
+        return (blockGround == Blocks.FARMLAND || blockGround == BlockList.beanstarter) && isValidPositionCropsBlock;
     }
 
 
@@ -294,7 +286,7 @@ public class TallCropBlock extends BushBlock implements IGrowable {
      * Get the OffsetType for this Block. Determines if the model is rendered slightly offset.
      */
     public Block.OffsetType getOffsetType() {
-        return Block.OffsetType.NONE;
+        return OffsetType.NONE;
     }
 
     /**
@@ -303,5 +295,45 @@ public class TallCropBlock extends BushBlock implements IGrowable {
     @OnlyIn(Dist.CLIENT)
     public long getPositionRandom(BlockState state, BlockPos pos) {
         return MathHelper.getCoordinateRandom(pos.getX(), pos.down(state.get(HALF) == DoubleBlockHalf.LOWER ? 0 : 1).getY(), pos.getZ());
+    }
+
+    //Gets the amount to drop when right clicked. Defaults to Dirt ¯\_(?)_/¯. OVERRIDE IN CHILD CLASS
+    public Item getDropWhenHarvested()
+    {
+        return Items.DIRT;
+    }
+
+    //Gets the max amount of drops. Defaults to 1. OVERRIDE IN CHILD CLASS
+    public int getMaxAmountOfDrops()
+    {
+        return 1;
+    }
+
+    //Method used to get what happens when clicked
+    @Override
+    public ActionResultType func_225533_a_(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult blockRayTraceResult) {
+        int age = state.get(getAgeProperty());
+        boolean flag = age == getMaxAge();
+        if (player.getHeldItem(hand).getItem() == Items.BONE_MEAL) {
+            return ActionResultType.PASS;
+        } else if (flag) {
+            int amount = this.getMaxAmountOfDrops() == 1 ? 1 : (1 + world.rand.nextInt(getMaxAmountOfDrops()-1));
+            spawnAsEntity(world, pos, new ItemStack(this.getDropWhenHarvested(), amount));
+            world.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + world.rand.nextFloat() * 0.4F);
+            if(state.get(HALF) == DoubleBlockHalf.LOWER)
+            {
+                world.setBlockState(pos.up(), this.stateContainer.getBaseState().with(HALF, DoubleBlockHalf.UPPER).with(getAgeProperty(), getMaxAge()+1));
+                world.setBlockState(pos, this.stateContainer.getBaseState().with(HALF, DoubleBlockHalf.LOWER).with(getAgeProperty(), getMaxAge()+1));
+            }
+            else
+            {
+                world.setBlockState(pos, this.stateContainer.getBaseState().with(HALF, DoubleBlockHalf.UPPER).with(getAgeProperty(), getMaxAge()+1));
+                world.setBlockState(pos.down(), this.stateContainer.getBaseState().with(HALF, DoubleBlockHalf.LOWER).with(getAgeProperty(), getMaxAge()+1));
+            }
+
+            return ActionResultType.SUCCESS;
+        } else {
+            return super.func_225533_a_(state, world, pos, player, hand, blockRayTraceResult);
+        }
     }
 }

@@ -5,6 +5,7 @@ import com.lethalmap.stardewmod.common.items.ItemList;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.state.IntegerProperty;
@@ -46,12 +47,6 @@ public class BeanStarterBlock extends TallCropBlock {
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-        builder.add(BEAN_STAGES);
-        builder.add(HALF);
-    }
-
-    @Override
     public IntegerProperty getAgeProperty() {
         return BEAN_STAGES;
     }
@@ -61,31 +56,13 @@ public class BeanStarterBlock extends TallCropBlock {
         return SHAPE;
     }
 
-    //Method used to get what happens when clicked
     @Override
-    public ActionResultType func_225533_a_(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult blockRayTraceResult) {
-        int age = state.get(getAgeProperty());
-        boolean flag = age == getMaxAge();
-        if (player.getHeldItem(hand).getItem() == Items.BONE_MEAL) {
-            return ActionResultType.PASS;
-        } else if (flag) {
-            int amount = 1 + world.rand.nextInt(2);
-            spawnAsEntity(world, pos, new ItemStack(ItemList.greenbean, amount + (flag ? 1 : 0)));
-            world.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + world.rand.nextFloat() * 0.4F);
-            if(state.get(HALF) == DoubleBlockHalf.LOWER)
-            {
-                world.setBlockState(pos.up(), this.stateContainer.getBaseState().with(HALF, DoubleBlockHalf.UPPER).with(getAgeProperty(), getMaxAge()+1));
-                world.setBlockState(pos, this.stateContainer.getBaseState().with(HALF, DoubleBlockHalf.LOWER).with(getAgeProperty(), getMaxAge()+1));
-            }
-            else
-            {
-                world.setBlockState(pos, this.stateContainer.getBaseState().with(HALF, DoubleBlockHalf.UPPER).with(getAgeProperty(), getMaxAge()+1));
-                world.setBlockState(pos.down(), this.stateContainer.getBaseState().with(HALF, DoubleBlockHalf.LOWER).with(getAgeProperty(), getMaxAge()+1));
-            }
+    public Item getDropWhenHarvested() {
+        return ItemList.greenbean;
+    }
 
-            return ActionResultType.SUCCESS;
-        } else {
-            return super.func_225533_a_(state, world, pos, player, hand, blockRayTraceResult);
-        }
+    @Override
+    public int getMaxAmountOfDrops() {
+        return 1;
     }
 }
