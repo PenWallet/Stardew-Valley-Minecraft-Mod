@@ -2,22 +2,17 @@ package com.lethalmap.stardewmod.common.blocks;
 
 import com.lethalmap.stardewmod.Constants;
 import com.lethalmap.stardewmod.common.items.ItemList;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.state.IntegerProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.DoubleBlockHalf;
-import net.minecraft.util.*;
+import net.minecraft.util.IItemProvider;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
 
 /*public class GreenBeanBlock extends DoublePlantBlock {
 
@@ -27,18 +22,18 @@ import net.minecraft.world.World;
     }
 }*/
 
-public class BeanStarterBlock extends TallCropBlock {
-    public static final IntegerProperty BEAN_STAGES = IntegerProperty.create("age", 0, 6);
+public class CoffeeBeanBlock extends TallCropBlock {
+    public static final IntegerProperty COFFEE_STAGES = IntegerProperty.create("age", 0, 6);
     private static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
 
-    public BeanStarterBlock() {
-        super(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0f).sound(SoundType.PLANT));
-        setRegistryName(Constants.MODID, Constants.BEANSTARTER);
+    public CoffeeBeanBlock() {
+        super(Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0f).sound(SoundType.PLANT));
+        setRegistryName(Constants.MODID, Constants.COFFEEBEAN);
     }
 
     @Override
     protected IItemProvider getSeedsItem() {
-        return ItemList.beanstarter;
+        return ItemList.coffeebean;
     }
 
     @Override
@@ -48,7 +43,7 @@ public class BeanStarterBlock extends TallCropBlock {
 
     @Override
     public IntegerProperty getAgeProperty() {
-        return BEAN_STAGES;
+        return COFFEE_STAGES;
     }
 
     @Override
@@ -58,16 +53,16 @@ public class BeanStarterBlock extends TallCropBlock {
 
     @Override
     public Item getDropWhenHarvested() {
-        return ItemList.greenbean;
+        return ItemList.coffeebean;
     }
 
     @Override
     public int getMaxAmountOfDrops() {
-        return 1;
+        return 2;
     }
 
     @Override
     public boolean alwaysDropMaxAmountOfDrops() {
-        return false;
+        return true;
     }
 }

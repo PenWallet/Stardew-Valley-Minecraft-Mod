@@ -102,6 +102,9 @@ public class StardewMod {
         RenderTypeLookup.setRenderLayer(BlockList.parsnip, RenderType.func_228643_e_());
         RenderTypeLookup.setRenderLayer(BlockList.worms, RenderType.func_228643_e_());
         RenderTypeLookup.setRenderLayer(BlockList.beanstarter, RenderType.func_228643_e_());
+        RenderTypeLookup.setRenderLayer(BlockList.coffeebean, RenderType.func_228643_e_());
+        RenderTypeLookup.setRenderLayer(BlockList.kale, RenderType.func_228643_e_());
+        RenderTypeLookup.setRenderLayer(BlockList.rhubarb, RenderType.func_228643_e_());
         EntitiesRegistry.registryEntityRenders();
     }
 
@@ -179,7 +182,10 @@ public class StardewMod {
                     BlockList.worms = new Worms(),
                     BlockList.ironore = new IronOre(),
                     BlockList.parsnip = new ParsnipBlock(),
-                    BlockList.beanstarter = new BeanStarterBlock()
+                    BlockList.beanstarter = new BeanStarterBlock(),
+                    BlockList.coffeebean = new CoffeeBeanBlock(),
+                    BlockList.kale = new KaleBlock(),
+                    BlockList.rhubarb = new RhubarbBlock()
             );
         }
 
@@ -305,8 +311,13 @@ public class StardewMod {
                     ItemList.iridiumpickaxe = new IridiumPickaxe(),
                     ItemList.iridiumingot = new IridiumIngot(),
                     ItemList.goldingot = new GoldIngot(),
+                    ItemList.greenbean = new GreenBean(),
+                    ItemList.coffeebean = new CoffeeBean(),
+                    ItemList.kaleseeds = new KaleSeeds(),
+                    ItemList.kale = new Kale(),
+                    ItemList.rhubarb = new Rhubarb(),
+                    ItemList.rhubarbseeds = new RhubarbSeeds()
                     ItemList.backpack = new Backpack()
-
             );
 
             EntitiesList.registerEntitySpawnEggs(itemRegistryEvent);

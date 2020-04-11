@@ -79,16 +79,49 @@ public class Constants {
     public static final String GUNTHER = "gunther";
 
     //CROPS
-    public static final String GARLIC = "garlic";
-    public static final String GARLICSEEDS = "garlicseeds";
     public static final String BLUEJAZZ = "bluejazz";
     public static final String BLUEJAZZSEEDS = "bluejazzseeds";
     public static final String CAULIFLOWER = "cauliflower";
     public static final String CAULIFLOWERSEEDS = "cauliflowerseeds";
-    public static final String PARSNIP = "parsnip";
-    public static final String PARSNIPSEEDS = "parsnipseeds";
+    public static final String COFFEEBEAN = "coffeebean";
+    public static final String GARLIC = "garlic";
+    public static final String GARLICSEEDS = "garlicseeds";
     public static final String GREENBEAN = "greenbean";
     public static final String BEANSTARTER = "beanstarter";
+    public static final String KALESEEDS = "kaleseeds";
+    public static final String KALE = "kale";
+    public static final String PARSNIP = "parsnip";
+    public static final String PARSNIPSEEDS = "parsnipseeds";
+    public static final String RHUBARB = "rhubarb";
+    public static final String RHUBARBSEEDS = "rhubarbseeds";
+    public static final String STRAWBERRYSEEDS = "strawberryseeds";
+    public static final String TULIPBULB = "tulipbulb";
+    public static final String RICESHOOT = "riceshoot";
+    public static final String BLUEBERRYSEEDS = "blueberryseeds";
+    public static final String CORNSEEDS = "cornseeds";
+    public static final String HOPSSTARTER = "hopsstarter";
+    public static final String PEPPERSEEDS = "pepperseeds";
+    public static final String MELONSEEDS = "melonseeds";
+    public static final String POPPYSEEDS = "poppyseeds";
+    public static final String RADISHSEEDS = "radishseeds";
+    public static final String REDCABBAGESEEDS = "redcabbageseeds";
+    public static final String STARFRUITSEEDS = "starfruitseeds";
+    public static final String SPANGLESEEDS = "spangleseeds";
+    public static final String TOMATOSEEDS = "tomatoseeds";
+    public static final String AMARANTHSEEDS = "amaranthseeds";
+    public static final String ARTICHOKESEEDS = "artichokeseeds";
+    public static final String BEETSEEDS = "beetseeds";
+    public static final String BOKCHOYSEEDS = "bokchoyseeds";
+    public static final String CRANBERRYSEEDS = "cranberryseeds";
+    public static final String EGGPLANTSEEDS = "eggplantseeds";
+    public static final String FAIRYSEEDS = "fairyseeds";
+    public static final String GRAPESTARTER = "grapestarter";
+    public static final String YAMSEEDS = "yamseeds";
+    public static final String ANCIENTSEEDS = "ancientseeds";
+    public static final String CACTUSSEEDS = "cactusseeds";
+    public static final String MIXEDSEEDS = "mixedseeds";
+    public static final String RARESEED = "rareseed";
+    public static final String TEASAPLING = "teasapling";
 
     //ARTIFACTS
     public static final String DWARFSCROLLI = "dwarfscrolli";

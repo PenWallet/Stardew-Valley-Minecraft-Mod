@@ -234,12 +234,12 @@ public class TallCropBlock extends BushBlock implements IGrowable {
         Block blockGround = worldIn.getBlockState(positionGround).getBlock();
 
         //Used to avoid player being able to place crops on top of crops
-        if(blockGround == BlockList.beanstarter && state.get(HALF) == DoubleBlockHalf.LOWER && worldIn.getBlockState(positionGround).get(HALF) == DoubleBlockHalf.UPPER)
+        if(blockGround == this && state.get(HALF) == DoubleBlockHalf.LOWER && worldIn.getBlockState(positionGround).get(HALF) == DoubleBlockHalf.UPPER)
             return false;
 
         //isValidPositionCropsBlock checks for the light level of the block
         boolean isValidPositionCropsBlock = (worldIn.func_226659_b_(pos, 0) >= 8 || worldIn.func_226660_f_(pos));
-        return (blockGround == Blocks.FARMLAND || blockGround == BlockList.beanstarter) && isValidPositionCropsBlock;
+        return (blockGround == Blocks.FARMLAND || blockGround == this) && isValidPositionCropsBlock;
     }
 
 
@@ -309,6 +309,12 @@ public class TallCropBlock extends BushBlock implements IGrowable {
         return 1;
     }
 
+    //Sets if, when harvested, the crop should always drop the max amount. Defaults to false. OVERRIDE IN CHILD CLASS
+    public boolean alwaysDropMaxAmountOfDrops()
+    {
+        return false;
+    }
+
     //Method used to get what happens when clicked
     @Override
     public ActionResultType func_225533_a_(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult blockRayTraceResult) {
@@ -317,7 +323,8 @@ public class TallCropBlock extends BushBlock implements IGrowable {
         if (player.getHeldItem(hand).getItem() == Items.BONE_MEAL) {
             return ActionResultType.PASS;
         } else if (flag) {
-            int amount = this.getMaxAmountOfDrops() == 1 ? 1 : (1 + world.rand.nextInt(getMaxAmountOfDrops()-1));
+            //If alwaysDropMaxAmountOfDrops is true, then the amount is the max. If not, then if the max is 1, drop one, if not, then do a random
+            int amount = this.alwaysDropMaxAmountOfDrops() ? getMaxAmountOfDrops() : (this.getMaxAmountOfDrops() == 1 ? 1 : (1 + world.rand.nextInt(getMaxAmountOfDrops()-1)));
             spawnAsEntity(world, pos, new ItemStack(this.getDropWhenHarvested(), amount));
             world.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + world.rand.nextFloat() * 0.4F);
             if(state.get(HALF) == DoubleBlockHalf.LOWER)

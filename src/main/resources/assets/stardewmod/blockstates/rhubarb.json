@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "age=0": { "model": "stardewmod:block/rhubarb_stage0" },
+    "age=1": { "model": "stardewmod:block/rhubarb_stage1" },
+    "age=2": { "model": "stardewmod:block/rhubarb_stage2" },
+    "age=3": { "model": "stardewmod:block/rhubarb_stage3" },
+    "age=4": { "model": "stardewmod:block/rhubarb_stage4" },
+    "age=5": { "model": "stardewmod:block/rhubarb_stage5" }
+  }
+}

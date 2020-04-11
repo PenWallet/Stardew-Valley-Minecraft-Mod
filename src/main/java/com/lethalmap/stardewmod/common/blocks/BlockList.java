@@ -29,8 +29,8 @@ public class BlockList {
     public static Block parsnip;
     public static Block rhubarb;
     public static Block strawberry;
-    public static Block tulipbulb;
-    public static Block riceshoot;
+    public static Block tulip;
+    public static Block unmilledrice;
     public static Block blueberry;
     public static Block corn;
     public static Block hops;
@@ -54,6 +54,6 @@ public class BlockList {
     public static Block ancient;
     public static Block cactus;
     public static Block mixed;
-    public static Block rareseed;
-    public static Block teasapling;
+    public static Block sweetgemberry;
+    public static Block tealeaves;
 }
