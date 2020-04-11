@@ -2,10 +2,14 @@
   "parent": "stardewmod:stardewmod/firstartifact",
   "display": {
     "icon": {
-      "item": "stardewmod:worms"
+      "item": "stardewmod:gunther"
     },
-    "title": "What is this?",
-    "description": "Archeologically fantastic",
+    "title": {
+      "translate": "advancements.stardewmod.artifactschallenge.title"
+    },
+    "description": {
+      "translate": "advancements.stardewmod.artifactschallenge.description"
+    },
     "show_toast": true,
     "frame": "challenge"
   },

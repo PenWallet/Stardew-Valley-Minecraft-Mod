@@ -4,8 +4,12 @@
     "icon": {
       "item": "stardewmod:copperingot"
     },
-    "title": "Bronzemania",
-    "description": "First steps in the Stardew Valley´s metalurgic world!",
+    "title": {
+      "translate": "advancements.stardewmod.obtaincopper.title"
+    },
+    "description": {
+      "translate": "advancements.stardewmod.obtaincopper.description"
+    },
     "show_toast": true
   },
   "criteria": {

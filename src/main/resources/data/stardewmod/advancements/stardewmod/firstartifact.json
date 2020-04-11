@@ -4,8 +4,12 @@
     "icon": {
       "item": "stardewmod:worms"
     },
-    "title": "What is this?",
-    "description": "Archeologically fantastic",
+    "title": {
+      "translate": "advancements.stardewmod.firstartifact.title"
+    },
+    "description": {
+      "translate": "advancements.stardewmod.firstartifact.description"
+    },
     "show_toast": true
   },
   "criteria": {

@@ -3,8 +3,12 @@
     "icon": {
       "item": "stardewmod:icon"
     },
-    "title": "Welcome to Stardew Valley Mod",
-    "description": "Stardew Mod achievements",
+    "title": {
+      "translate": "advancements.stardewmod.root.title"
+    },
+    "description": {
+      "translate": "advancements.stardewmod.root.description"
+    },
     "frame": "task",
     "show_toast": false,
     "announce_to_chat": true,

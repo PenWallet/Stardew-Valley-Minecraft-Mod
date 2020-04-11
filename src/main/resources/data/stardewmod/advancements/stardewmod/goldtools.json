@@ -1,14 +1,14 @@
 {
-  "parent": "stardewmod:stardewmod/obtaincopper",
+  "parent": "stardewmod:stardewmod/irontools",
   "display": {
     "icon": {
-      "item": "stardewmod:copperpickaxe"
+      "item": "stardewmod:goldpickaxe"
     },
     "title": {
-      "translate": "advancements.stardewmod.coppertools.title"
+      "translate": "advancements.stardewmod.goldtools.title"
     },
     "description": {
-      "translate": "advancements.stardewmod.coppertools.description"
+      "translate": "advancements.stardewmod.goldtools.description"
     },
     "show_toast": true
   },
@@ -18,7 +18,7 @@
       "conditions": {
         "items": [
           {
-            "item": "stardewmod:copperpickaxe"
+            "item": "stardewmod:goldpickaxe"
           }
         ]
       }
@@ -28,7 +28,7 @@
       "conditions": {
         "items": [
           {
-            "item": "stardewmod:copperhoe"
+            "item": "stardewmod:goldhoe"
           }
         ]
       }
@@ -38,7 +38,7 @@
       "conditions": {
         "items": [
           {
-            "item": "stardewmod:copperaxe"
+            "item": "stardewmod:goldaxe"
           }
         ]
       }

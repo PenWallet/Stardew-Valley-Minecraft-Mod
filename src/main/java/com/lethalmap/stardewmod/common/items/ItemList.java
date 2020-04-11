@@ -7,6 +7,8 @@ public class ItemList {
     //Items
     public static Item copperingot;
     public static Item ironingot;
+    public static Item goldingot;
+    public static Item iridiumingot;
     public static Item coppernugget;
     public static Item ironnugget;
     public static Item goldnugget;
@@ -26,6 +28,12 @@ public class ItemList {
     public static Item ironpickaxe;
     public static Item ironaxe;
     public static Item ironhoe;
+    public static Item iridiumpickaxe;
+    public static Item iridiumaxe;
+    public static Item iridiumhoe;
+    public static Item goldpickaxe;
+    public static Item goldaxe;
+    public static Item goldhoe;
 
     //Swords
     public static Item templarblade;
@@ -59,6 +67,7 @@ public class ItemList {
     public static Item iridiumbat_egg;
     //Icono
     public static Item icon;
+    public static Item gunther;
 
 
     //Foods
@@ -165,4 +174,6 @@ public class ItemList {
     public static Item frozengeode;
     public static Item magmageode;
     public static Item omnigeode;
+
+    public static Item backpack;
 }

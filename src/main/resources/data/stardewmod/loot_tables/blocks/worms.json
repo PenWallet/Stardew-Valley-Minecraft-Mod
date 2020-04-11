@@ -19,7 +19,7 @@
         {
           "condition": "minecraft:match_tool",
           "predicate": {
-            "item": "stardewmod:darksword"
+            "tag": "stardewmod:hoes"
           }
         }
       ]

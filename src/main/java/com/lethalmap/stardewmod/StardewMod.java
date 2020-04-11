@@ -1,5 +1,6 @@
 package com.lethalmap.stardewmod;
 
+import com.lethalmap.stardewmod.client.ColorHandlers;
 import com.lethalmap.stardewmod.client.renders.EntitiesRegistry;
 import com.lethalmap.stardewmod.common.EntitiesList;
 import com.lethalmap.stardewmod.common.blocks.*;
@@ -73,6 +74,7 @@ public class StardewMod {
         // Register the doClientStuff method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
 
+
         Config.loadConfig(Config.client_config, FMLPaths.CONFIGDIR.get().resolve("stardewmod-client.toml").toString());
         Config.loadConfig(Config.server_config, FMLPaths.CONFIGDIR.get().resolve("stardewmod-server.toml").toString());
 
@@ -91,7 +93,7 @@ public class StardewMod {
     private void doClientStuff(final FMLClientSetupEvent event) {
         // do something that can only be done on the client
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
-
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(ColorHandlers::registerItemColor);
         RenderTypeLookup.setRenderLayer(BlockList.garlic, RenderType.func_228643_e_());
         RenderTypeLookup.setRenderLayer(BlockList.bluejazz, RenderType.func_228643_e_());
         RenderTypeLookup.setRenderLayer(BlockList.cauliflower, RenderType.func_228643_e_());
@@ -190,6 +192,7 @@ public class StardewMod {
                     ItemList.goldore = new com.lethalmap.stardewmod.common.items.ores.GoldOre(),
                     ItemList.iridiumore = new com.lethalmap.stardewmod.common.items.ores.IridiumOre(),
                     ItemList.icon = new Item(new Item.Properties()).setRegistryName(new ResourceLocation(Constants.MODID, Constants.ICON)),
+                    ItemList.gunther = new Item(new Item.Properties()).setRegistryName(new ResourceLocation(Constants.MODID, Constants.GUNTHER)),
                     ItemList.copperaxe = new CopperAxe(),
                     ItemList.copperpickaxe = new CopperPickaxe(),
                     ItemList.copperhoe = new CopperHoe(),
@@ -287,7 +290,17 @@ public class StardewMod {
                     ItemList.ironhoe = new IronHoe(),
                     ItemList.ironpickaxe = new IronPickaxe(),
                     ItemList.ironingot = new IronIngot(),
-                    ItemList.greenbean = new GreenBean()
+                    ItemList.greenbean = new GreenBean(),
+                    ItemList.goldaxe = new GoldAxe(),
+                    ItemList.goldhoe = new GoldHoe(),
+                    ItemList.goldpickaxe = new GoldPickaxe(),
+                    ItemList.iridiumaxe = new IridiumAxe(),
+                    ItemList.iridiumhoe = new IridiumHoe(),
+                    ItemList.iridiumpickaxe = new IridiumPickaxe(),
+                    ItemList.iridiumingot = new IridiumIngot(),
+                    ItemList.goldingot = new GoldIngot(),
+                    ItemList.backpack = new Backpack()
+
             );
 
             EntitiesList.registerEntitySpawnEggs(itemRegistryEvent);

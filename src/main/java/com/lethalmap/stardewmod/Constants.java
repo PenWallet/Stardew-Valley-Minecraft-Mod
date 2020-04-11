@@ -12,6 +12,8 @@ public class Constants {
     public static final ItemGroup SMSGEMSITEMGROUP = new StardewModGemsItemGroup();
 
     //IDs objects
+    public static final String IRIDIUMINGOT = "iridiumingot";
+    public static final String GOLDINGOT = "goldingot";
     public static final String COPPERORE = "copperore";
     public static final String IRONORE = "ironore";
     public static final String GOLDORE = "goldore";
@@ -24,6 +26,12 @@ public class Constants {
     public static final String COPPERINGOT = "copperingot";
     public static final String COPPERNUGGET = "coppernugget";
     public static final String COPPERAXE = "copperaxe";
+    public static final String GOLDAXE = "goldaxe";
+    public static final String GOLDPICKAXE = "goldpickaxe";
+    public static final String GOLDOHOE = "goldhoe";
+    public static final String IRIDIUMAXE = "iridiumaxe";
+    public static final String IRIDIUMPICKAXE = "iridiumpickaxe";
+    public static final String IRIDIUMOHOE = "iridiumhoe";
     public static final String COPPERHOE = "copperhoe";
     public static final String COPPERPICKAXE = "copperpickaxe";
     public static final String COMBATBOOTS = "combatboots";
@@ -60,6 +68,7 @@ public class Constants {
     public static final String IRIDIUMBAT = "iridiumbat";
     public static final String IRIDIUMBAT_EGG = "iridiumbat_egg";
     public static final String ICON = "icon";
+    public static final String GUNTHER = "gunther";
 
     //CROPS
     public static final String GARLIC = "garlic";
@@ -133,4 +142,6 @@ public class Constants {
     public static final String MAGMAGEODE = "magmageode";
     public static final String OMNIGEODE = "omnigeode";
 
+
+    public static final String BACKPACK = "backpack";
 }
