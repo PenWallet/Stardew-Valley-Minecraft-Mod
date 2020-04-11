@@ -2,7 +2,11 @@
   "item.stardewmod.copperingot": "Copper Ingot",
   "item.stardewmod.copperaxe": "Copper Axe",
   "item.stardewmod.copperpickaxe": "Copper Pickaxe",
+  "item.stardewmod.ironingot": "Iron Ingot",
+  "item.stardewmod.ironaxe": "Iron Axe",
+  "item.stardewmod.ironpickaxe": "Iron Pickaxe",
   "item.stardewmod.copperhoe": "Copper Hoe",
+  "item.stardewmod.ironhoe": "Iron Hoe",
   "item.stardewmod.templarblade": "Templar Blade",
   "item.stardewmod.rustysword": "Rusty Sword",
   "item.stardewmod.woodenblade": "Wooden Blade",
@@ -46,6 +50,8 @@
   "itemGroup.stardewmoditemgroup": "Stardew Mod",
   "itemGroup.stardewmodfooditemgroup": "Stardew Mod Food",
   "itemGroup.stardewmodseedsitemgroup": "Stardew Mod Seeds",
+  "itemGroup.stardewmodswordsitemgroup": "Stardew Mod Swords",
+  "itemGroup.stardewmodgemsitemgroup": "Stardew Mod Gems",
 
   "item.stardewmod.combatboots": "Combat Boots",
 
@@ -98,5 +104,20 @@
   "item.stardewmod.nautilusfossil": "Nautilus Fossil",
   "item.stardewmod.amphibianfossil": "Amphibian Fossil",
   "item.stardewmod.palmfossil": "Palm Fossil",
-  "item.stardewmod.trilobite": "Trilobite"
+  "item.stardewmod.trilobite": "Trilobite",
+
+
+
+  "item.stardewmod.svemerald": "Emerald",
+  "item.stardewmod.aquamarine": "Aquamarine",
+  "item.stardewmod.ruby": "Ruby",
+  "item.stardewmod.amethyst": "Amethyst",
+  "item.stardewmod.topaz": "Topaz",
+  "item.stardewmod.jade": "Jade",
+  "item.stardewmod.svdiamond": "Diamond",
+  "item.stardewmod.prismaticshard": "Prismatic Shard",
+  "item.stardewmod.geode": "Geode",
+  "item.stardewmod.frozengeode": "Frozen Geode",
+  "item.stardewmod.magmageode": "Magma Geode",
+  "item.stardewmod.omnigeode": "Omnigeode"
 }

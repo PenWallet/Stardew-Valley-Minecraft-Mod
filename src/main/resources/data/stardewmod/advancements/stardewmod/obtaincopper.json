@@ -1,0 +1,23 @@
+{
+  "parent": "stardewmod:stardewmod/root",
+  "display": {
+    "icon": {
+      "item": "stardewmod:copperingot"
+    },
+    "title": "Bronzemania",
+    "description": "First steps in the Stardew Valley´s metalurgic world!",
+    "show_toast": true
+  },
+  "criteria": {
+    "trigger_1": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:coppernugget"
+          }
+        ]
+      }
+    }
+  }
+}

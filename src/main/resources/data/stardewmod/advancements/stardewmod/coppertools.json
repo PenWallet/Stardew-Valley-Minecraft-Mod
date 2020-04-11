@@ -1,0 +1,43 @@
+{
+  "parent": "stardewmod:stardewmod/obtaincopper",
+  "display": {
+    "icon": {
+      "item": "stardewmod:copperpickaxe"
+    },
+    "title": "The Bronze Family",
+    "description": "Nice bronze set!",
+    "show_toast": true
+  },
+  "criteria": {
+    "trigger_1": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:copperpickaxe"
+          }
+        ]
+      }
+    },
+    "trigger_2": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:copperhoe"
+          }
+        ]
+      }
+    },
+    "trigger_3": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:copperaxe"
+          }
+        ]
+      }
+    }
+  }
+}

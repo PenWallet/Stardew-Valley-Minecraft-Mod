@@ -1,0 +1,34 @@
+{
+  "parent": "stardewmod:stardewmod/root",
+  "display": {
+    "icon": {
+      "item": "stardewmod:darksword"
+    },
+    "title": "Darkness power",
+    "description": "You found the legendary Dark Sword",
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "show_toast": true
+  },
+  "criteria": {
+    "trigger_1": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:darksword"
+          }
+        ]
+      }
+    },
+    "trigger_2": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:lavakatana"
+          }
+        ]
+      }
+    }
+  }
+}

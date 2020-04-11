@@ -8,14 +8,14 @@ import com.lethalmap.stardewmod.common.items.*;
 import com.lethalmap.stardewmod.common.items.artifacts.*;
 import com.lethalmap.stardewmod.common.items.dagger.CarvingKnife;
 import com.lethalmap.stardewmod.common.items.foods.*;
+import com.lethalmap.stardewmod.common.items.gems.*;
+import com.lethalmap.stardewmod.common.items.ores.IronIngot;
 import com.lethalmap.stardewmod.common.items.ores.IronNugget;
 import com.lethalmap.stardewmod.common.items.swords.*;
 import com.lethalmap.stardewmod.common.items.armors.CombatBoots;
 import com.lethalmap.stardewmod.common.items.ores.CopperIngot;
 import com.lethalmap.stardewmod.common.items.ores.CopperNugget;
-import com.lethalmap.stardewmod.common.items.tools.CopperAxe;
-import com.lethalmap.stardewmod.common.items.tools.CopperHoe;
-import com.lethalmap.stardewmod.common.items.tools.CopperPickaxe;
+import com.lethalmap.stardewmod.common.items.tools.*;
 import com.lethalmap.stardewmod.common.world.OreGeneration;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.advancements.criterion.ItemPredicate;
@@ -46,6 +46,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.stream.Collectors;
+
+
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("stardewmod")
@@ -82,6 +84,7 @@ public class StardewMod {
 
         OreGeneration.setupOreGeneration();
     }
+
 
     private void doClientStuff(final FMLClientSetupEvent event) {
         // do something that can only be done on the client
@@ -259,7 +262,23 @@ public class StardewMod {
                     ItemList.nautilusfossil = new NautilusFossil(),
                     ItemList.amphibianfossil = new AmphibianFossil(),
                     ItemList.palmfossil = new PalmFossil(),
-                    ItemList.trilobite = new Trilobite()
+                    ItemList.trilobite = new Trilobite(),
+                    ItemList.svemerald = new SVEmerald(),
+                    ItemList.svdiamond = new SVDiamond(),
+                    ItemList.aquamarine = new Aquamarine(),
+                    ItemList.ruby = new Ruby(),
+                    ItemList.amethyst = new Amethyst(),
+                    ItemList.topaz = new Topaz(),
+                    ItemList.jade = new Jade(),
+                    ItemList.prismaticshard = new PrismaticShard(),
+                    ItemList.geode = new Geode(),
+                    ItemList.frozengeode = new FrozenGeode(),
+                    ItemList.magmageode = new MagmaGeode(),
+                    ItemList.omnigeode = new Omnigeode(),
+                    ItemList.ironaxe = new IronAxe(),
+                    ItemList.ironhoe = new IronHoe(),
+                    ItemList.ironpickaxe = new IronPickaxe(),
+                    ItemList.ironingot = new IronIngot()
             );
 
             EntitiesList.registerEntitySpawnEggs(itemRegistryEvent);

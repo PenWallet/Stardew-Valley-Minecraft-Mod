@@ -6,7 +6,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.crafting.Ingredient;
 
 public enum ToolTiers implements IItemTier {
-    COPPER(4.0f, 9.0f, 200, 2, 20, ItemList.copperingot),
+    COPPER(2.0f, 4.0f, 200, 2, 20, ItemList.copperingot),
+    IRON(3.5f, 6.0f, 200, 2, 20, ItemList.ironingot),
     GENERICSWORD(1f,1f,1,1,20,null),
     GENERICDAGGER(1f,1f,1,1,20,null);
 

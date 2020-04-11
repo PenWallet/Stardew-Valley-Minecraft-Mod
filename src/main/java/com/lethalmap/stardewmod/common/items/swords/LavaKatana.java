@@ -8,7 +8,7 @@ import net.minecraft.item.SwordItem;
 
 public class LavaKatana extends SwordItem {
     public LavaKatana() {
-        super(ToolTiers.GENERICSWORD, 6,3f, new Properties().group(Constants.SMITEMGROUP));
+        super(ToolTiers.GENERICSWORD, 6,3f, new Properties().group(Constants.SMSSWORDSITEMGROUP));
         setRegistryName(Constants.MODID, Constants.LAVAKATANA);
     }
 

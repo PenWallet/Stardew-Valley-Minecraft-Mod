@@ -1,0 +1,43 @@
+{
+  "parent": "stardewmod:stardewmod/coppertools",
+  "display": {
+    "icon": {
+      "item": "stardewmod:ironpickaxe"
+    },
+    "title": "Iron-ic",
+    "description": "The best set you can have, for now at least :(",
+    "show_toast": true
+  },
+  "criteria": {
+    "trigger_1": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:ironpickaxe"
+          }
+        ]
+      }
+    },
+    "trigger_2": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:ironhoe"
+          }
+        ]
+      }
+    },
+    "trigger_3": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stardewmod:ironaxe"
+          }
+        ]
+      }
+    }
+  }
+}

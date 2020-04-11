@@ -6,6 +6,7 @@ public class ItemList {
 
     //Items
     public static Item copperingot;
+    public static Item ironingot;
     public static Item coppernugget;
     public static Item ironnugget;
     public static Item worms;
@@ -18,6 +19,9 @@ public class ItemList {
     public static Item copperpickaxe;
     public static Item copperaxe;
     public static Item copperhoe;
+    public static Item ironpickaxe;
+    public static Item ironaxe;
+    public static Item ironhoe;
 
     //Swords
     public static Item templarblade;
@@ -140,4 +144,20 @@ public class ItemList {
     public static  Item amphibianfossil;
     public static  Item palmfossil;
     public static  Item trilobite;
+
+    //Gems
+    public static Item svemerald;
+    public static Item aquamarine;
+    public static Item ruby;
+    public static Item amethyst;
+    public static Item topaz;
+    public static Item jade;
+    public static Item svdiamond;
+    public static Item prismaticshard;
+
+    //Geodes
+    public static Item geode;
+    public static Item frozengeode;
+    public static Item magmageode;
+    public static Item omnigeode;
 }
