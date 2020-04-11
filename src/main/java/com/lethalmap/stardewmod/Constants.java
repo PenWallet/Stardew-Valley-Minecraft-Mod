@@ -15,9 +15,11 @@ public class Constants {
     public static final String COPPERORE = "copperore";
     public static final String IRONORE = "ironore";
     public static final String GOLDORE = "goldore";
+    public static final String IRIDIUMORE = "iridiumore";
     public static final String IRONNUGGET = "ironnugget";
     public static final String IRONINGOT = "ironingot";
     public static final String GOLDNUGGET = "goldnugget";
+    public static final String IRIDIUMNUGGET = "iridiumnugget";
     public static final String WORMS = "worms";
     public static final String COPPERINGOT = "copperingot";
     public static final String COPPERNUGGET = "coppernugget";

@@ -10,12 +10,14 @@ public class ItemList {
     public static Item coppernugget;
     public static Item ironnugget;
     public static Item goldnugget;
+    public static Item iridiumnugget;
     public static Item worms;
 
     //Blocks
     public static Item copperore;
     public static Item ironore;
     public static Item goldore;
+    public static Item iridiumore;
 
     //Tools
     public static Item copperpickaxe;

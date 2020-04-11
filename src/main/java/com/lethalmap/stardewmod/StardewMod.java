@@ -3,19 +3,20 @@ package com.lethalmap.stardewmod;
 import com.lethalmap.stardewmod.client.renders.EntitiesRegistry;
 import com.lethalmap.stardewmod.common.EntitiesList;
 import com.lethalmap.stardewmod.common.blocks.*;
+import com.lethalmap.stardewmod.common.blocks.CopperOre;
+import com.lethalmap.stardewmod.common.blocks.GoldOre;
+import com.lethalmap.stardewmod.common.blocks.IridiumOre;
+import com.lethalmap.stardewmod.common.blocks.IronOre;
+import com.lethalmap.stardewmod.common.blocks.Worms;
 import com.lethalmap.stardewmod.common.config.Config;
 import com.lethalmap.stardewmod.common.items.*;
 import com.lethalmap.stardewmod.common.items.artifacts.*;
 import com.lethalmap.stardewmod.common.items.dagger.CarvingKnife;
 import com.lethalmap.stardewmod.common.items.foods.*;
 import com.lethalmap.stardewmod.common.items.gems.*;
-import com.lethalmap.stardewmod.common.items.ores.IronIngot;
-import com.lethalmap.stardewmod.common.items.ores.GoldNugget;
-import com.lethalmap.stardewmod.common.items.ores.IronNugget;
+import com.lethalmap.stardewmod.common.items.ores.*;
 import com.lethalmap.stardewmod.common.items.swords.*;
 import com.lethalmap.stardewmod.common.items.armors.CombatBoots;
-import com.lethalmap.stardewmod.common.items.ores.CopperIngot;
-import com.lethalmap.stardewmod.common.items.ores.CopperNugget;
 import com.lethalmap.stardewmod.common.items.tools.*;
 import com.lethalmap.stardewmod.common.world.OreGeneration;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -165,6 +166,7 @@ public class StardewMod {
             blockRegistryEvent.getRegistry().registerAll(
                     BlockList.copperore = new CopperOre(),
                     BlockList.goldore = new GoldOre(),
+                    BlockList.iridiumore = new IridiumOre(),
                     BlockList.garlic = new GarlicBlock(),
                     BlockList.bluejazz = new BlueJazzBlock(),
                     BlockList.cauliflower = new CauliflowerBlock(),
@@ -186,6 +188,7 @@ public class StardewMod {
                     ItemList.copperore = new com.lethalmap.stardewmod.common.items.ores.CopperOre(),
                     ItemList.ironore = new com.lethalmap.stardewmod.common.items.ores.IronOre(),
                     ItemList.goldore = new com.lethalmap.stardewmod.common.items.ores.GoldOre(),
+                    ItemList.iridiumore = new com.lethalmap.stardewmod.common.items.ores.IridiumOre(),
                     ItemList.icon = new Item(new Item.Properties()).setRegistryName(new ResourceLocation(Constants.MODID, Constants.ICON)),
                     ItemList.copperaxe = new CopperAxe(),
                     ItemList.copperpickaxe = new CopperPickaxe(),
@@ -213,6 +216,7 @@ public class StardewMod {
                     ItemList.galaxysword = new GalaxySword(),
                     ItemList.coppernugget = new CopperNugget(),
                     ItemList.ironnugget = new IronNugget(),
+                    ItemList.iridiumnugget = new IridiumNugget(),
                     ItemList.goldnugget = new GoldNugget(),
                     ItemList.garlic = new Garlic(),
                     ItemList.carvingknife = new CarvingKnife(),

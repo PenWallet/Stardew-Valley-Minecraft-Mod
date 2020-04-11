@@ -9,6 +9,7 @@ public class BlockList {
     public static Block copperore;
     public static Block ironore;
     public static Block goldore;
+    public static Block iridiumore;
 
     //Crops
     public static Block bluejazz;
