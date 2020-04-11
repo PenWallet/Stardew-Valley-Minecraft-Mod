@@ -10,6 +10,7 @@ import com.lethalmap.stardewmod.common.items.dagger.CarvingKnife;
 import com.lethalmap.stardewmod.common.items.foods.*;
 import com.lethalmap.stardewmod.common.items.gems.*;
 import com.lethalmap.stardewmod.common.items.ores.IronIngot;
+import com.lethalmap.stardewmod.common.items.ores.GoldNugget;
 import com.lethalmap.stardewmod.common.items.ores.IronNugget;
 import com.lethalmap.stardewmod.common.items.swords.*;
 import com.lethalmap.stardewmod.common.items.armors.CombatBoots;
@@ -163,6 +164,7 @@ public class StardewMod {
 
             blockRegistryEvent.getRegistry().registerAll(
                     BlockList.copperore = new CopperOre(),
+                    BlockList.goldore = new GoldOre(),
                     BlockList.garlic = new GarlicBlock(),
                     BlockList.bluejazz = new BlueJazzBlock(),
                     BlockList.cauliflower = new CauliflowerBlock(),
@@ -183,6 +185,7 @@ public class StardewMod {
 
                     ItemList.copperore = new com.lethalmap.stardewmod.common.items.ores.CopperOre(),
                     ItemList.ironore = new com.lethalmap.stardewmod.common.items.ores.IronOre(),
+                    ItemList.goldore = new com.lethalmap.stardewmod.common.items.ores.GoldOre(),
                     ItemList.icon = new Item(new Item.Properties()).setRegistryName(new ResourceLocation(Constants.MODID, Constants.ICON)),
                     ItemList.copperaxe = new CopperAxe(),
                     ItemList.copperpickaxe = new CopperPickaxe(),
@@ -210,6 +213,7 @@ public class StardewMod {
                     ItemList.galaxysword = new GalaxySword(),
                     ItemList.coppernugget = new CopperNugget(),
                     ItemList.ironnugget = new IronNugget(),
+                    ItemList.goldnugget = new GoldNugget(),
                     ItemList.garlic = new Garlic(),
                     ItemList.carvingknife = new CarvingKnife(),
                     ItemList.garlicseeds = new GarlicSeeds(),

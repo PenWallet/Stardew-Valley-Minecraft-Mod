@@ -9,11 +9,13 @@ public class ItemList {
     public static Item ironingot;
     public static Item coppernugget;
     public static Item ironnugget;
+    public static Item goldnugget;
     public static Item worms;
 
     //Blocks
     public static Item copperore;
     public static Item ironore;
+    public static Item goldore;
 
     //Tools
     public static Item copperpickaxe;

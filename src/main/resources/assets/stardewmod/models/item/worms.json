@@ -1,6 +1,3 @@
 {
-  "parent": "item/handheld",
-  "textures": {
-    "layer0": "stardewmod:item/worms"
-  }
+  "parent": "stardewmod:block/worms"
 }

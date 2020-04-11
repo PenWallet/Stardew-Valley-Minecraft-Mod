@@ -8,7 +8,8 @@ public class BlockList {
     public static Block worms;
     public static Block copperore;
     public static Block ironore;
-    
+    public static Block goldore;
+
     //Crops
     public static Block bluejazz;
     public static Block cauliflower;

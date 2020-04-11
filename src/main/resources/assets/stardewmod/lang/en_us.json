@@ -46,6 +46,7 @@
   "block.stardewmod.cauliflower": "Cauliflower",
   "block.stardewmod.parsnip": "Parsnip",
   "block.stardewmod.ironore": "Iron Ore",
+  "block.stardewmod.goldore": "Gold Ore",
   "block.stardewmod.beanstarter": "Bean Starter",
 
   "itemGroup.stardewmoditemgroup": "Stardew Mod",
@@ -62,6 +63,7 @@
 
   "item.stardewmod.coppernugget": "Copper Nugget",
   "item.stardewmod.ironnugget": "Iron Nugget",
+  "item.stardewmod.goldnugget": "Gold Nugget",
 
 
   "item.stardewmod.dwarfscrolli": "Dwarf Scroll I",
