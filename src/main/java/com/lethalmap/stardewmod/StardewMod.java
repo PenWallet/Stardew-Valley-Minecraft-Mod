@@ -1,6 +1,5 @@
 package com.lethalmap.stardewmod;
 
-import com.lethalmap.stardewmod.client.ColorHandlers;
 import com.lethalmap.stardewmod.client.renders.EntitiesRegistry;
 import com.lethalmap.stardewmod.common.EntitiesList;
 import com.lethalmap.stardewmod.common.blocks.*;
@@ -22,12 +21,12 @@ import com.lethalmap.stardewmod.common.items.swords.*;
 import com.lethalmap.stardewmod.common.items.armors.CombatBoots;
 import com.lethalmap.stardewmod.common.items.tools.*;
 import com.lethalmap.stardewmod.common.world.OreGeneration;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.advancements.criterion.ItemPredicate;
+import com.lethalmap.stardewmod.init.ModContainerTypes;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.entity.EntityType;
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.*;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.LootPool;
@@ -75,7 +74,7 @@ public class StardewMod {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
         // Register the doClientStuff method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
-
+        FMLJavaModLoadingContext.get().getModEventBus().addGenericListener(ContainerType.class, ModContainerTypes::registerContainerTypes);
 
         Config.loadConfig(Config.client_config, FMLPaths.CONFIGDIR.get().resolve("stardewmod-client.toml").toString());
         Config.loadConfig(Config.server_config, FMLPaths.CONFIGDIR.get().resolve("stardewmod-server.toml").toString());
@@ -87,7 +86,6 @@ public class StardewMod {
     private void setup(final FMLCommonSetupEvent event) {
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
-
         OreGeneration.setupOreGeneration();
     }
 
@@ -95,7 +93,6 @@ public class StardewMod {
     private void doClientStuff(final FMLClientSetupEvent event) {
         // do something that can only be done on the client
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(ColorHandlers::registerItemColor);
         RenderTypeLookup.setRenderLayer(BlockList.garlic, RenderType.func_228643_e_());
         RenderTypeLookup.setRenderLayer(BlockList.bluejazz, RenderType.func_228643_e_());
         RenderTypeLookup.setRenderLayer(BlockList.cauliflower, RenderType.func_228643_e_());
@@ -105,6 +102,8 @@ public class StardewMod {
         RenderTypeLookup.setRenderLayer(BlockList.coffeebean, RenderType.func_228643_e_());
         RenderTypeLookup.setRenderLayer(BlockList.kale, RenderType.func_228643_e_());
         RenderTypeLookup.setRenderLayer(BlockList.rhubarb, RenderType.func_228643_e_());
+        ModContainerTypes.registerScreens(event);
+
         EntitiesRegistry.registryEntityRenders();
     }
 
@@ -302,7 +301,6 @@ public class StardewMod {
                     ItemList.ironhoe = new IronHoe(),
                     ItemList.ironpickaxe = new IronPickaxe(),
                     ItemList.ironingot = new IronIngot(),
-                    ItemList.greenbean = new GreenBean(),
                     ItemList.goldaxe = new GoldAxe(),
                     ItemList.goldhoe = new GoldHoe(),
                     ItemList.goldpickaxe = new GoldPickaxe(),
@@ -316,8 +314,11 @@ public class StardewMod {
                     ItemList.kaleseeds = new KaleSeeds(),
                     ItemList.kale = new Kale(),
                     ItemList.rhubarb = new Rhubarb(),
-                    ItemList.rhubarbseeds = new RhubarbSeeds()
-                    ItemList.backpack = new Backpack()
+                    ItemList.rhubarbseeds = new RhubarbSeeds(),
+                    ItemList.backpack = new Backpack(),
+                    ItemList.starteraxe = new StarterAxe(),
+                    ItemList.starterpickaxe = new StarterPickaxe(),
+                    ItemList.starterhoe = new StarterHoe()
             );
 
             EntitiesList.registerEntitySpawnEggs(itemRegistryEvent);

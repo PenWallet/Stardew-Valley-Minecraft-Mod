@@ -42,6 +42,9 @@ public class ItemList {
     public static Item goldpickaxe;
     public static Item goldaxe;
     public static Item goldhoe;
+    public static Item starterhoe;
+    public static Item starteraxe;
+    public static Item starterpickaxe;
 
     //Swords
     public static Item templarblade;

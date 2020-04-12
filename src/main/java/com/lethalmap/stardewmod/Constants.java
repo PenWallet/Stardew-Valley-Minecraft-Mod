@@ -185,4 +185,7 @@ public class Constants {
 
 
     public static final String BACKPACK = "backpack";
+    public static final String STARTERAXE = "starteraxe";
+    public static final String STARTERPICKAXE = "starterpickaxe";
+    public static final String STARTERHOE = "starterhoe";
 }
