@@ -183,9 +183,13 @@ public class Constants {
     public static final String MAGMAGEODE = "magmageode";
     public static final String OMNIGEODE = "omnigeode";
 
+    //BACKPACK
+    public static final String BACKPACK = "backpack";
 
     public static final String BACKPACK = "backpack";
     public static final String STARTERAXE = "starteraxe";
     public static final String STARTERPICKAXE = "starterpickaxe";
     public static final String STARTERHOE = "starterhoe";
+    //CAPABILITIES
+    public static final String CURRENCY = "currencycap";
 }

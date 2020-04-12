@@ -10,6 +10,8 @@ import com.lethalmap.stardewmod.common.blocks.GoldOre;
 import com.lethalmap.stardewmod.common.blocks.IridiumOre;
 import com.lethalmap.stardewmod.common.blocks.IronOre;
 import com.lethalmap.stardewmod.common.blocks.Worms;
+import com.lethalmap.stardewmod.common.capabilities.currency.CurrencyCapability;
+import com.lethalmap.stardewmod.common.capabilities.currency.ICurrency;
 import com.lethalmap.stardewmod.common.config.Config;
 import com.lethalmap.stardewmod.common.items.*;
 import com.lethalmap.stardewmod.common.items.artifacts.*;
@@ -25,15 +27,20 @@ import com.lethalmap.stardewmod.init.ModContainerTypes;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.inventory.container.ContainerType;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.storage.loot.LootPool;
 import net.minecraft.world.storage.loot.TableLootEntry;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -54,7 +61,7 @@ import java.util.stream.Collectors;
 
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod("stardewmod")
+@Mod(Constants.MODID)
 public class StardewMod {
     // Directly reference a log4j logger.
     public static StardewMod instance;
@@ -87,6 +94,9 @@ public class StardewMod {
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         OreGeneration.setupOreGeneration();
+
+        //Register the Currency capability
+        CurrencyCapability.register();
     }
 
 
@@ -105,6 +115,24 @@ public class StardewMod {
         ModContainerTypes.registerScreens(event);
 
         EntitiesRegistry.registryEntityRenders();
+    }
+
+    //Event used to attach the currency to all players
+    @SubscribeEvent
+    public void attachCapabilitiesEntity(final AttachCapabilitiesEvent<Entity> event)
+    {
+        if(event.getObject() instanceof PlayerEntity)
+            event.addCapability(new ResourceLocation(Constants.MODID, Constants.CURRENCY), new CurrencyCapability());
+    }
+
+    //Event used to clone the current currency to the new one. If the event is not present, then it will start anew
+    @SubscribeEvent
+    public void playerDeath(PlayerEvent.Clone event)
+    {
+        ICurrency currencyOld = event.getOriginal().getCapability(CurrencyCapability.CURRENCY_CAPABILITY).orElseThrow(IllegalStateException::new);
+        ICurrency currencyNew = event.getEntity().getCapability(CurrencyCapability.CURRENCY_CAPABILITY).orElseThrow(IllegalStateException::new);
+
+        currencyNew.setAmount(currencyOld.getAmount());
     }
 
     @SubscribeEvent
