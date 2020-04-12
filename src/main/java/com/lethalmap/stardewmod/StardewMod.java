@@ -309,7 +309,6 @@ public class StardewMod {
                     ItemList.iridiumpickaxe = new IridiumPickaxe(),
                     ItemList.iridiumingot = new IridiumIngot(),
                     ItemList.goldingot = new GoldIngot(),
-                    ItemList.greenbean = new GreenBean(),
                     ItemList.coffeebean = new CoffeeBean(),
                     ItemList.kaleseeds = new KaleSeeds(),
                     ItemList.kale = new Kale(),
