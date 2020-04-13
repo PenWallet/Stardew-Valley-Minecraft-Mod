@@ -13,6 +13,7 @@ import com.lethalmap.stardewmod.common.blocks.Worms;
 import com.lethalmap.stardewmod.common.capabilities.currency.CurrencyCapability;
 import com.lethalmap.stardewmod.common.capabilities.currency.ICurrency;
 import com.lethalmap.stardewmod.common.config.Config;
+import com.lethalmap.stardewmod.common.gui.CustomInventoryScreen;
 import com.lethalmap.stardewmod.common.items.*;
 import com.lethalmap.stardewmod.common.items.artifacts.*;
 import com.lethalmap.stardewmod.common.items.dagger.CarvingKnife;
@@ -22,9 +23,13 @@ import com.lethalmap.stardewmod.common.items.ores.*;
 import com.lethalmap.stardewmod.common.items.swords.*;
 import com.lethalmap.stardewmod.common.items.armors.CombatBoots;
 import com.lethalmap.stardewmod.common.items.tools.*;
+import com.lethalmap.stardewmod.common.networking.C2SCurrencyPacket;
+import com.lethalmap.stardewmod.common.networking.S2CCurrencyPacket;
 import com.lethalmap.stardewmod.common.world.OreGeneration;
 import com.lethalmap.stardewmod.init.ModContainerTypes;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screen.inventory.InventoryScreen;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.entity.Entity;
@@ -33,76 +38,85 @@ import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.storage.loot.LootPool;
 import net.minecraft.world.storage.loot.TableLootEntry;
+import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
-import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
+import net.minecraftforge.fml.network.NetworkRegistry;
+import net.minecraftforge.fml.network.simple.SimpleChannel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.stream.Collectors;
 
-
-
-// The value here should match an entry in the META-INF/mods.toml file
 @Mod(Constants.MODID)
 public class StardewMod {
-    // Directly reference a log4j logger.
     public static StardewMod instance;
-    private static final Logger LOGGER = LogManager.getLogger(Constants.MODID);
+    public static final Logger LOGGER = LogManager.getLogger(Constants.MODID);
+    private static int networkID = 0;
+    private static final String PROTOCOL_VERSION = "1";
+    public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
+            new ResourceLocation(Constants.MODID, Constants.CURRENCYCHANNEL),
+            () -> PROTOCOL_VERSION,
+            PROTOCOL_VERSION::equals,
+            PROTOCOL_VERSION::equals
+    );
 
     public StardewMod() {
         instance = this;
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.server_config);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Config.client_config);
-
-        // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        // Register the enqueueIMC method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
-        // Register the processIMC method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
-        // Register the doClientStuff method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
         FMLJavaModLoadingContext.get().getModEventBus().addGenericListener(ContainerType.class, ModContainerTypes::registerContainerTypes);
 
+        //Loads configs
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.server_config);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Config.client_config);
         Config.loadConfig(Config.client_config, FMLPaths.CONFIGDIR.get().resolve("stardewmod-client.toml").toString());
         Config.loadConfig(Config.server_config, FMLPaths.CONFIGDIR.get().resolve("stardewmod-server.toml").toString());
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+
+        //Register Networking packets
+        CHANNEL.registerMessage(
+                networkID++,
+                C2SCurrencyPacket.class,
+                C2SCurrencyPacket::encode,
+                C2SCurrencyPacket::decode,
+                C2SCurrencyPacket::handle
+        );
+        CHANNEL.registerMessage(
+                networkID++,
+                S2CCurrencyPacket.class,
+                S2CCurrencyPacket::encode,
+                S2CCurrencyPacket::decode,
+                S2CCurrencyPacket::handle
+        );
     }
 
+    //It's also PreInit
     private void setup(final FMLCommonSetupEvent event) {
-        // some preinit code
-        LOGGER.info("HELLO FROM PREINIT");
+        //Ores are spawned in world
         OreGeneration.setupOreGeneration();
 
-        //Register the Currency capability
+        //Register the Currency capability (users' money)
         CurrencyCapability.register();
     }
 
 
     private void doClientStuff(final FMLClientSetupEvent event) {
-        // do something that can only be done on the client
-        LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
         RenderTypeLookup.setRenderLayer(BlockList.garlic, RenderType.func_228643_e_());
         RenderTypeLookup.setRenderLayer(BlockList.bluejazz, RenderType.func_228643_e_());
         RenderTypeLookup.setRenderLayer(BlockList.cauliflower, RenderType.func_228643_e_());
@@ -135,6 +149,15 @@ public class StardewMod {
         currencyNew.setAmount(currencyOld.getAmount());
     }
 
+    //This changes the vanilla InventoryScreen for our own CustomInventoryScreen
+    @SubscribeEvent
+    public void changeInventoryGUI(GuiOpenEvent event)
+    {
+        if(event.getGui() instanceof InventoryScreen)
+            event.setGui(new CustomInventoryScreen(Minecraft.getInstance().player));
+    }
+
+    //Loads all loots to vanilla entities, chests, fishing, etc.
     @SubscribeEvent
     public void lootLoad(LootTableLoadEvent evt) {
         switch (evt.getName().toString()) {
@@ -166,37 +189,11 @@ public class StardewMod {
         }
     }
 
-    private void enqueueIMC(final InterModEnqueueEvent event) {
-        // some example code to dispatch IMC to another mod
-        InterModComms.sendTo("examplemod", "helloworld", () -> {
-            LOGGER.info("Hello world from the MDK");
-            return "Hello world";
-        });
-    }
-
-    private void processIMC(final InterModProcessEvent event) {
-        // some example code to receive and process InterModComms from other mods
-        LOGGER.info("Got IMC {}", event.getIMCStream().
-                map(m -> m.getMessageSupplier().get()).
-                collect(Collectors.toList()));
-    }
-
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
-    @SubscribeEvent
-    public void onServerStarting(FMLServerStartingEvent event) {
-        // do something when the server starts
-        LOGGER.info("HELLO from server starting");
-    }
-
-    // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
-    // Event bus for receiving Registry Events)
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
+        //Register blocks
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-            // register a new block here
-            LOGGER.info("HELLO from Register Block");
-
             blockRegistryEvent.getRegistry().registerAll(
                     BlockList.copperore = new CopperOre(),
                     BlockList.aquamarineore = new AquamarineOre(),
@@ -216,11 +213,9 @@ public class StardewMod {
             );
         }
 
+        //Register items
         @SubscribeEvent
         public static void onItemsRegistry(final RegistryEvent.Register<Item> itemRegistryEvent) {
-            // register a new block here
-            LOGGER.info("HELLO from Item");
-
             itemRegistryEvent.getRegistry().registerAll(
                     ItemList.copperingot = new CopperIngot(),
 
@@ -270,6 +265,7 @@ public class StardewMod {
                     ItemList.cauliflower = new Cauliflower(),
                     ItemList.parsnip = new Parsnip(),
                     ItemList.beanstarter = new BeanStarter(),
+                    ItemList.greenbean = new GreenBean(),
                     ItemList.parsnipseeds = new ParsnipSeeds(),
                     ItemList.dwarfscrolli = new DwarfScrollI(),
                     ItemList.dwarfscrollii = new DwarfScrollII(),
@@ -351,11 +347,9 @@ public class StardewMod {
             EntitiesList.registerEntitySpawnEggs(itemRegistryEvent);
         }
 
+        //Register entities
         @SubscribeEvent
         public static void onRegisterEntities(final RegistryEvent.Register<EntityType<?>> entityRegistryEvent) {
-            // register a new block here
-            LOGGER.info("HELLO from Entity");
-
             entityRegistryEvent.getRegistry().registerAll(
                     EntitiesList.IRIDIUM_BAT
             );

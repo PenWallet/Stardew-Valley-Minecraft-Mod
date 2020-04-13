@@ -27,6 +27,7 @@ public class CopperIngot extends Item {
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
+        //TODO: Quitar
         if(!worldIn.isRemote)
         {
             ICurrency currency = playerIn.getCapability(CurrencyCapability.CURRENCY_CAPABILITY).orElseThrow(IllegalStateException::new);
@@ -36,4 +37,5 @@ public class CopperIngot extends Item {
         
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
+
 }

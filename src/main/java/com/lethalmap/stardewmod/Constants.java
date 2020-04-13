@@ -5,6 +5,7 @@ import net.minecraft.item.ItemGroup;
 
 public class Constants {
     public static final String MODID = "stardewmod";
+    public static final String COST = "cost";
     public static final ItemGroup SMITEMGROUP = new StardewModItemGroup();
     public static final ItemGroup SMFOODITEMGROUP = new StardewModFoodItemGroup();
     public static final ItemGroup SMSEEDSITEMGROUP = new StardewModSeedsItemGroup();
@@ -185,11 +186,13 @@ public class Constants {
 
     //BACKPACK
     public static final String BACKPACK = "backpack";
-
-    public static final String BACKPACK = "backpack";
     public static final String STARTERAXE = "starteraxe";
     public static final String STARTERPICKAXE = "starterpickaxe";
     public static final String STARTERHOE = "starterhoe";
+
     //CAPABILITIES
     public static final String CURRENCY = "currencycap";
+
+    //NETWORKING
+    public static final String CURRENCYCHANNEL = "currencychannel";
 }
