@@ -60,7 +60,6 @@ import net.minecraftforge.fml.network.simple.SimpleChannel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-
 @Mod(Constants.MODID)
 public class StardewMod {
     public static StardewMod instance;

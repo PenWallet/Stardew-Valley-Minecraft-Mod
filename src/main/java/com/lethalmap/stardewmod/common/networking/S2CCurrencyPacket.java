@@ -20,11 +20,12 @@ public class S2CCurrencyPacket {
         this.amount = amount;
     }
 
+    //This code only runs on the client
     public static void handle(final S2CCurrencyPacket msg, Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
             ServerPlayerEntity sender = ctx.get().getSender(); // the client that sent this packet
             //Set the amount in the screen
-            ((CustomInventoryScreen)Minecraft.getInstance().currentScreen).setMoney(msg.amount);
+            Minecraft.getInstance().player.getCapability(CurrencyCapability.CURRENCY_CAPABILITY).orElseThrow(IllegalStateException::new).setAmount(msg.amount);
         });
         ctx.get().setPacketHandled(true);
     }

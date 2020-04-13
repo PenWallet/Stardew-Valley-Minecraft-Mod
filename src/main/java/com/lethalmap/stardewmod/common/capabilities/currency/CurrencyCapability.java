@@ -1,5 +1,6 @@
 package com.lethalmap.stardewmod.common.capabilities.currency;
 
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.IntNBT;
 import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
@@ -36,5 +37,10 @@ public class CurrencyCapability implements ICapabilitySerializable<IntNBT> {
     @Override
     public void deserializeNBT(IntNBT nbt) {
         CURRENCY_CAPABILITY.getStorage().readNBT(CURRENCY_CAPABILITY, instance.orElseThrow(() -> new IllegalArgumentException("LazyOptional cannot be empty!")), null, nbt);
+    }
+
+    public static int getAmountFromPlayer(PlayerEntity player)
+    {
+        return player.getCapability(CURRENCY_CAPABILITY).orElseThrow(IllegalStateException::new).getAmount();
     }
 }

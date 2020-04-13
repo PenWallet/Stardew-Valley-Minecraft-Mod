@@ -41,20 +41,10 @@ public class CustomInventoryScreen extends DisplayEffectsScreen<PlayerContainer>
     private boolean field_212353_B;
     private boolean widthTooNarrow;
     private boolean buttonClicked;
-    private int money = 0;
 
     public CustomInventoryScreen(PlayerEntity player) {
         super(player.container, player.inventory, new TranslationTextComponent("container.crafting"));
         this.passEvents = true;
-
-        //Call to get the server to send the user's currency information
-        StardewMod.CHANNEL.sendToServer(new C2SCurrencyPacket());
-    }
-
-    //Sets the variable to the right amount of money
-    public void setMoney(int amount)
-    {
-        this.money = amount;
     }
 
     public void tick() {
@@ -127,7 +117,7 @@ public class CustomInventoryScreen extends DisplayEffectsScreen<PlayerContainer>
         func_228187_a_(i + 51, j + 75, 30, (float)(i + 51) - this.oldMouseX, (float)(j + 75 - 50) - this.oldMouseY, this.minecraft.player);
 
         //Draw the amount of money to the user
-        this.font.drawString(money+"g", this.guiLeft + 110, this.height / 2 - 13, 0xffae00);
+        this.font.drawString(CurrencyCapability.getAmountFromPlayer(Minecraft.getInstance().player)+"g", this.guiLeft + 110, this.height / 2 - 13, 0xffae00);
     }
 
     public static void func_228187_a_(int p_228187_0_, int p_228187_1_, int p_228187_2_, float p_228187_3_, float p_228187_4_, LivingEntity p_228187_5_) {
