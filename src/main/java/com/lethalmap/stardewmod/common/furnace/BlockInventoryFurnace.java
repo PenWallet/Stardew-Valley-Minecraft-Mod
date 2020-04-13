@@ -26,8 +26,7 @@ import javax.annotation.Nullable;
 public class BlockInventoryFurnace extends ContainerBlock {
     public BlockInventoryFurnace() {
 
-        super(Block.Properties.create(Material.ROCK)
-        );
+        super(Block.Properties.create(Material.ROCK));
 
         BlockState defaultBlockState = this.stateContainer.getBaseState().with(BURNING_SIDES_COUNT, 0);
         this.setDefaultState(defaultBlockState);

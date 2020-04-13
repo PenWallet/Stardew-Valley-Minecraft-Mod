@@ -142,6 +142,7 @@ public class StardewMod {
         RenderTypeLookup.setRenderLayer(BlockList.rhubarb, RenderType.func_228643_e_());
         ModContainerTypes.registerScreens(event);
         EntitiesRegistry.registryEntityRenders();
+        ScreenManager.registerFactory(TileEntityList.furnaceContainer, ContainerScreenFurnace::new);
     }
 
     //Event used to attach the currency to all players
