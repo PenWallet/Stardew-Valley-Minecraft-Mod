@@ -12,6 +12,12 @@ public class Constants {
     public static final ItemGroup SMSSWORDSITEMGROUP = new StardewModSwordsItemGroup();
     public static final ItemGroup SMSGEMSITEMGROUP = new StardewModGemsItemGroup();
 
+
+    //Furnace
+    public static final String FURNACE = "furnace" ;
+    public static final String FURNACETILEENTITY = "furnacetileentity" ;
+    public static final String FURNACECONTAINER = "furnacecontainer";
+
     //IDs objects
     public static final String IRIDIUMINGOT = "iridiumingot";
     public static final String GOLDINGOT = "goldingot";
@@ -195,4 +201,6 @@ public class Constants {
 
     //NETWORKING
     public static final String CURRENCYCHANNEL = "currencychannel";
+
+
 }

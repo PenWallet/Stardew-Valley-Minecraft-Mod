@@ -14,6 +14,7 @@ import com.lethalmap.stardewmod.common.blocks.Worms;
 import com.lethalmap.stardewmod.common.capabilities.currency.CurrencyCapability;
 import com.lethalmap.stardewmod.common.capabilities.currency.ICurrency;
 import com.lethalmap.stardewmod.common.config.Config;
+import com.lethalmap.stardewmod.common.furnace.*;
 import com.lethalmap.stardewmod.common.gui.CustomInventoryScreen;
 import com.lethalmap.stardewmod.common.items.*;
 import com.lethalmap.stardewmod.common.items.artifacts.*;
@@ -26,10 +27,15 @@ import com.lethalmap.stardewmod.common.items.armors.CombatBoots;
 import com.lethalmap.stardewmod.common.items.tools.*;
 import com.lethalmap.stardewmod.common.networking.C2SCurrencyPacket;
 import com.lethalmap.stardewmod.common.networking.S2CCurrencyPacket;
+import com.lethalmap.stardewmod.common.tiles.TileEntityList;
 import com.lethalmap.stardewmod.common.world.OreGeneration;
 import com.lethalmap.stardewmod.init.ModContainerTypes;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.datafixers.kinds.Const;
 import net.minecraft.block.Block;
+import net.minecraft.block.FurnaceBlock;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.gui.screen.inventory.InventoryScreen;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
@@ -38,12 +44,14 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.LootPool;
 import net.minecraft.world.storage.loot.TableLootEntry;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.extensions.IForgeContainerType;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.RegistryEvent;
@@ -58,13 +66,12 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 
 @Mod(Constants.MODID)
 public class StardewMod {
     public static StardewMod instance;
-    public static final Logger LOGGER = LogManager.getLogger(Constants.MODID);
     private static int networkID = 0;
     private static final String PROTOCOL_VERSION = "1";
     public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
@@ -128,7 +135,6 @@ public class StardewMod {
         RenderTypeLookup.setRenderLayer(BlockList.kale, RenderType.func_228643_e_());
         RenderTypeLookup.setRenderLayer(BlockList.rhubarb, RenderType.func_228643_e_());
         ModContainerTypes.registerScreens(event);
-
         EntitiesRegistry.registryEntityRenders();
     }
 
@@ -219,6 +225,8 @@ public class StardewMod {
 
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
+
+
         //Register blocks
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
@@ -238,7 +246,9 @@ public class StardewMod {
                     BlockList.beanstarter = new BeanStarterBlock(),
                     BlockList.coffeebean = new CoffeeBeanBlock(),
                     BlockList.kale = new KaleBlock(),
-                    BlockList.rhubarb = new RhubarbBlock()
+                    BlockList.rhubarb = new RhubarbBlock(),
+                    BlockList.blockfurnace = new BlockInventoryFurnace()
+
             );
         }
 
@@ -247,7 +257,7 @@ public class StardewMod {
         public static void onItemsRegistry(final RegistryEvent.Register<Item> itemRegistryEvent) {
             itemRegistryEvent.getRegistry().registerAll(
                     ItemList.copperingot = new CopperIngot(),
-
+                    ItemList.blockfurnaceitem = new FurnaceBlockItem(),
                     ItemList.copperore = new com.lethalmap.stardewmod.common.items.ores.CopperOre(),
                     ItemList.amethystore = new com.lethalmap.stardewmod.common.items.ores.AmethystOre(),
                     ItemList.aquamarineore = new com.lethalmap.stardewmod.common.items.ores.AquamarineOre(),
@@ -385,6 +395,23 @@ public class StardewMod {
             );
 
             EntitiesList.registerEntityWorldSpawns();
+        }
+
+        @SubscribeEvent
+        public static void onTileEntityTypeRegistration(final RegistryEvent.Register<TileEntityType<?>> event) {
+            TileEntityList.furnaceTile = TileEntityType.Builder.create(TileEntityFurnace::new, BlockList.blockfurnace)
+                    .build(null);
+            // you probably don't need a datafixer --> null should be fine
+            TileEntityList.furnaceTile.setRegistryName(Constants.MODID, Constants.FURNACETILEENTITY);
+            event.getRegistry().register(TileEntityList.furnaceTile);
+        }
+
+        @SubscribeEvent
+        public static void registerContainers(final RegistryEvent.Register<ContainerType<?>> event)
+        {
+            TileEntityList.furnaceContainer = IForgeContainerType.create(ContainerFurnace::createContainerClientSide);
+            TileEntityList.furnaceContainer.setRegistryName(Constants.MODID, Constants.FURNACECONTAINER);
+            event.getRegistry().register(TileEntityList.furnaceContainer);
         }
     }
 }

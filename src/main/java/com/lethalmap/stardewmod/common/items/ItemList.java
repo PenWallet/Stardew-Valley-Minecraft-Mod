@@ -1,5 +1,6 @@
 package com.lethalmap.stardewmod.common.items;
 
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 
 public class ItemList {
@@ -17,6 +18,7 @@ public class ItemList {
 
     //Blocks
     public static Item copperore;
+    public static Item blockfurnaceitem;
     public static Item ironore;
     public static Item goldore;
     public static Item iridiumore;

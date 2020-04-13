@@ -18,7 +18,7 @@ public class BlockList {
     public static Block mysticstone;
     public static Block rubyore;
     public static Block topazore;
-
+    public static Block blockfurnace;
     //Crops
     public static Block bluejazz;
     public static Block cauliflower;
