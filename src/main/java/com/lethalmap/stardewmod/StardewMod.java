@@ -36,11 +36,14 @@ import net.minecraft.block.Block;
 import net.minecraft.block.FurnaceBlock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
+import net.minecraft.client.gui.recipebook.RecipeBookGui;
 import net.minecraft.client.gui.screen.inventory.InventoryScreen;
+import net.minecraft.client.gui.widget.button.ImageButton;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
@@ -48,6 +51,8 @@ import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.LootPool;
 import net.minecraft.world.storage.loot.TableLootEntry;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -65,6 +70,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.fml.network.NetworkRegistry;
+import net.minecraftforge.fml.network.PacketDistributor;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
 
 
@@ -146,6 +152,36 @@ public class StardewMod {
             event.addCapability(new ResourceLocation(Constants.MODID, Constants.CURRENCY), new CurrencyCapability());
     }
 
+    //This changes the vanilla InventoryScreen for our own CustomInventoryScreen
+    @SubscribeEvent
+    public void changeInventoryGUI(GuiOpenEvent event)
+    {
+        if(event.getGui() instanceof InventoryScreen){}
+            //event.setGui(new CustomInventoryScreen(Minecraft.getInstance().player));
+    }
+
+    //Event to add the string to the screen
+    @OnlyIn(Dist.CLIENT)
+    @SubscribeEvent
+    public void guiScreenEvent(GuiScreenEvent.DrawScreenEvent.Post event)
+    {
+        if(!(event.getGui() instanceof InventoryScreen)) return;
+
+        InventoryScreen screen = (InventoryScreen)event.getGui();
+        int guiLeft = (screen.width - screen.getXSize()) / 2;
+        for(Object object : screen.children())
+        {
+            if(object instanceof RecipeBookGui)
+            {
+                ((RecipeBookGui)object).updateScreenPosition(screen.width < 379, guiLeft + 151, screen.height / 2 - 79);
+            }
+            else if(object instanceof ImageButton)
+            {
+                ((ImageButton)object).setPosition(guiLeft + 151, screen.height / 2 - 79);
+            }
+        }
+    }
+
     //Event used to clone the current currency to the new one. If the event is not present, then it will start anew
     @SubscribeEvent
     public void playerDeath(PlayerEvent.Clone event)
@@ -156,39 +192,31 @@ public class StardewMod {
         currencyNew.setAmount(currencyOld.getAmount());
     }
 
-    @SubscribeEvent
-    public void guiScreenEvent(GuiScreenEvent event)
-    {
-        int i = 0;
-    }
-
     //Event currently used only to update the user's currency information
     @SubscribeEvent
     public void playerLoggedIn(PlayerEvent.PlayerLoggedInEvent event)
     {
-        //CHANNEL.sendToServer(new C2SCurrencyPacket());
+        ServerPlayerEntity player = (ServerPlayerEntity)event.getPlayer();
+        int amount = CurrencyCapability.getAmountFromPlayer(player);
+        CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new S2CCurrencyPacket(amount));
     }
 
     //Event currently used only to update the user's currency information
     @SubscribeEvent
     public void playerRespawned(PlayerEvent.PlayerRespawnEvent event)
     {
-        //CHANNEL.sendToServer(new C2SCurrencyPacket());
+        ServerPlayerEntity player = (ServerPlayerEntity)event.getPlayer();
+        int amount = CurrencyCapability.getAmountFromPlayer(player);
+        CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new S2CCurrencyPacket(amount));
     }
 
     //Event currently used only to update the user's currency information
     @SubscribeEvent
     public void playerChangedDimension(PlayerEvent.PlayerChangedDimensionEvent event)
     {
-        //CHANNEL.sendToServer(new C2SCurrencyPacket());
-    }
-
-    //This changes the vanilla InventoryScreen for our own CustomInventoryScreen
-    @SubscribeEvent
-    public void changeInventoryGUI(GuiOpenEvent event)
-    {
-        if(event.getGui() instanceof InventoryScreen)
-            event.setGui(new CustomInventoryScreen(Minecraft.getInstance().player));
+        ServerPlayerEntity player = (ServerPlayerEntity)event.getPlayer();
+        int amount = CurrencyCapability.getAmountFromPlayer(player);
+        CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new S2CCurrencyPacket(amount));
     }
 
     //Loads all loots to vanilla entities, chests, fishing, etc.
