@@ -6,6 +6,7 @@ import com.lethalmap.stardewmod.common.blocks.*;
 import com.lethalmap.stardewmod.common.blocks.AmethystOre;
 import com.lethalmap.stardewmod.common.blocks.AquamarineOre;
 import com.lethalmap.stardewmod.common.blocks.CopperOre;
+import com.lethalmap.stardewmod.common.blocks.EmeraldOre;
 import com.lethalmap.stardewmod.common.blocks.GoldOre;
 import com.lethalmap.stardewmod.common.blocks.IridiumOre;
 import com.lethalmap.stardewmod.common.blocks.IronOre;
@@ -197,6 +198,7 @@ public class StardewMod {
             blockRegistryEvent.getRegistry().registerAll(
                     BlockList.copperore = new CopperOre(),
                     BlockList.aquamarineore = new AquamarineOre(),
+                    BlockList.emeraldore = new EmeraldOre(),
                     BlockList.goldore = new GoldOre(),
                     BlockList.amethystore = new AmethystOre(),
                     BlockList.iridiumore = new IridiumOre(),
@@ -222,6 +224,7 @@ public class StardewMod {
                     ItemList.copperore = new com.lethalmap.stardewmod.common.items.ores.CopperOre(),
                     ItemList.amethystore = new com.lethalmap.stardewmod.common.items.ores.AmethystOre(),
                     ItemList.aquamarineore = new com.lethalmap.stardewmod.common.items.ores.AquamarineOre(),
+                    ItemList.emeraldore = new com.lethalmap.stardewmod.common.items.ores.EmeraldOre(),
                     ItemList.ironore = new com.lethalmap.stardewmod.common.items.ores.IronOre(),
                     ItemList.goldore = new com.lethalmap.stardewmod.common.items.ores.GoldOre(),
                     ItemList.iridiumore = new com.lethalmap.stardewmod.common.items.ores.IridiumOre(),
@@ -251,6 +254,7 @@ public class StardewMod {
                     ItemList.steelfalchion = new SteelFalchion(),
                     ItemList.lavakatana = new LavaKatana(),
                     ItemList.galaxysword = new GalaxySword(),
+                    ItemList.greenbean = new GreenBean(),
                     ItemList.coppernugget = new CopperNugget(),
                     ItemList.ironnugget = new IronNugget(),
                     ItemList.iridiumnugget = new IridiumNugget(),

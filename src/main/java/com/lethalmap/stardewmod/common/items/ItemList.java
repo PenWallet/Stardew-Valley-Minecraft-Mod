@@ -22,7 +22,7 @@ public class ItemList {
     public static Item iridiumore;
     public static Item amethystore;
     public static Item aquamarineore;
-    public static Item emeraldeore;
+    public static Item emeraldore;
     public static Item jadeeore;
     public static Item gemore;
     public static Item mysticstone;

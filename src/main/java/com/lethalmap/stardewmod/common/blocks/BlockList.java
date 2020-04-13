@@ -12,7 +12,7 @@ public class BlockList {
     public static Block iridiumore;
     public static Block amethystore;
     public static Block aquamarineore;
-    public static Block emeraldeore;
+    public static Block emeraldore;
     public static Block jadeeore;
     public static Block gemore;
     public static Block mysticstone;

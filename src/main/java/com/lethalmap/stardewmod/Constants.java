@@ -41,7 +41,7 @@ public class Constants {
     public static final String IRONPICKAXE = "ironpickaxe";
     public static final String AMETHYSTORE = "amethystore";
     public static final String AQUAMARINEORE = "aquamarineore";
-    public static final String EMERALDORE = "emeraldeore";
+    public static final String EMERALDORE = "emeraldore";
     public static final String JADEORE = "jadeeore";
     public static final String GEMORE = "gemore";
     public static final String MYSTICSTONE = "mysticstone";
