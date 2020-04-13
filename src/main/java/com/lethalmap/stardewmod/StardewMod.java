@@ -42,6 +42,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.LootPool;
 import net.minecraft.world.storage.loot.TableLootEntry;
 import net.minecraftforge.client.event.GuiOpenEvent;
+import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.LootTableLoadEvent;
@@ -147,6 +148,33 @@ public class StardewMod {
         ICurrency currencyNew = event.getEntity().getCapability(CurrencyCapability.CURRENCY_CAPABILITY).orElseThrow(IllegalStateException::new);
 
         currencyNew.setAmount(currencyOld.getAmount());
+    }
+
+    @SubscribeEvent
+    public void guiScreenEvent(GuiScreenEvent event)
+    {
+        int i = 0;
+    }
+
+    //Event currently used only to update the user's currency information
+    @SubscribeEvent
+    public void playerLoggedIn(PlayerEvent.PlayerLoggedInEvent event)
+    {
+        //CHANNEL.sendToServer(new C2SCurrencyPacket());
+    }
+
+    //Event currently used only to update the user's currency information
+    @SubscribeEvent
+    public void playerRespawned(PlayerEvent.PlayerRespawnEvent event)
+    {
+        //CHANNEL.sendToServer(new C2SCurrencyPacket());
+    }
+
+    //Event currently used only to update the user's currency information
+    @SubscribeEvent
+    public void playerChangedDimension(PlayerEvent.PlayerChangedDimensionEvent event)
+    {
+        //CHANNEL.sendToServer(new C2SCurrencyPacket());
     }
 
     //This changes the vanilla InventoryScreen for our own CustomInventoryScreen
@@ -268,7 +296,6 @@ public class StardewMod {
                     ItemList.cauliflower = new Cauliflower(),
                     ItemList.parsnip = new Parsnip(),
                     ItemList.beanstarter = new BeanStarter(),
-                    ItemList.greenbean = new GreenBean(),
                     ItemList.parsnipseeds = new ParsnipSeeds(),
                     ItemList.dwarfscrolli = new DwarfScrollI(),
                     ItemList.dwarfscrollii = new DwarfScrollII(),
