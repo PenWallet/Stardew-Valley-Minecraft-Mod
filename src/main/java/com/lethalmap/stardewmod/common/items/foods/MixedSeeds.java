@@ -3,10 +3,20 @@ package com.lethalmap.stardewmod.common.items.foods;
 import com.lethalmap.stardewmod.Constants;
 import com.lethalmap.stardewmod.common.blocks.BlockList;
 import net.minecraft.item.BlockNamedItem;
+import com.lethalmap.stardewmod.common.items.IStardewItem;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import javax.annotation.Nullable;
 
-public class MixedSeeds extends BlockNamedItem {
+public class MixedSeeds extends BlockNamedItem implements IStardewItem {
     public MixedSeeds() {
         super(BlockList.mixed, new Properties().group(Constants.SMSEEDSITEMGROUP));
         setRegistryName(Constants.MIXEDSEEDS);
+    }
+
+    @Override
+    public boolean canBeSold() {
+        return false;
     }
 }
