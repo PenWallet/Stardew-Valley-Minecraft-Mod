@@ -5,7 +5,7 @@ import net.minecraft.item.ItemGroup;
 
 public class Constants {
     public static final String MODID = "stardewmod";
-    public static final String COST = "cost";
+    public static final String SELLINGPRICE = "sellingprice";
     public static final ItemGroup SMITEMGROUP = new StardewModItemGroup();
     public static final ItemGroup SMFOODITEMGROUP = new StardewModFoodItemGroup();
     public static final ItemGroup SMSEEDSITEMGROUP = new StardewModSeedsItemGroup();

@@ -2,12 +2,32 @@ package com.lethalmap.stardewmod.common.items.ores;
 
 import com.lethalmap.stardewmod.Constants;
 import com.lethalmap.stardewmod.common.blocks.BlockList;
+import com.lethalmap.stardewmod.common.items.IStardewItem;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
-public class AmethystOre extends BlockItem {
+import javax.annotation.Nullable;
+
+public class AmethystOre extends BlockItem implements IStardewItem {
     public AmethystOre() {
         super(BlockList.amethystore, new Properties().group(Constants.SMITEMGROUP));
         setRegistryName(Constants.MODID, Constants.AMETHYSTORE);
+    }
+
+    @Nullable
+    @Override
+    public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundNBT nbt) {
+        CompoundNBT compoundNBT = new CompoundNBT();
+        compoundNBT.putInt(Constants.SELLINGPRICE, 100);
+        stack.setTag(compoundNBT);
+        return null;
+    }
+
+    @Override
+    public boolean canBeSold() {
+        return true;
     }
 }
 

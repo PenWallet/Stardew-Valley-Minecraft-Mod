@@ -30,6 +30,7 @@ import com.lethalmap.stardewmod.common.networking.S2CCurrencyPacket;
 import com.lethalmap.stardewmod.common.tiles.TileEntityList;
 import com.lethalmap.stardewmod.common.world.OreGeneration;
 import com.lethalmap.stardewmod.init.ModContainerTypes;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.datafixers.DataFixer;
 import com.mojang.datafixers.kinds.Const;
 import net.minecraft.block.Block;
@@ -37,8 +38,10 @@ import net.minecraft.block.FurnaceBlock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.gui.recipebook.RecipeBookGui;
+import net.minecraft.client.gui.screen.inventory.FurnaceScreen;
 import net.minecraft.client.gui.screen.inventory.InventoryScreen;
 import net.minecraft.client.gui.widget.button.ImageButton;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.entity.Entity;
@@ -63,6 +66,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.client.gui.GuiUtils;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -72,7 +76,6 @@ import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.PacketDistributor;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
-
 
 
 @Mod(Constants.MODID)
@@ -86,6 +89,7 @@ public class StardewMod {
             PROTOCOL_VERSION::equals,
             PROTOCOL_VERSION::equals
     );
+    private static final ResourceLocation CUSTOM_INVENTORY = new ResourceLocation(Constants.MODID, "textures/gui/container/custominventory.png");
 
     public StardewMod() {
         instance = this;
@@ -169,18 +173,35 @@ public class StardewMod {
         if(!(event.getGui() instanceof InventoryScreen)) return;
 
         InventoryScreen screen = (InventoryScreen)event.getGui();
-        int guiLeft = (screen.width - screen.getXSize()) / 2;
+        screen.getMinecraft().fontRenderer.drawString(CurrencyCapability.getAmountFromPlayer(Minecraft.getInstance().player)+"g", screen.getGuiLeft() + 110, screen.height / 2 - 13, 0xffae00);
+
         for(Object object : screen.children())
         {
             if(object instanceof RecipeBookGui)
-            {
-                ((RecipeBookGui)object).updateScreenPosition(screen.width < 379, guiLeft + 151, screen.height / 2 - 79);
-            }
+                ((RecipeBookGui)object).updateScreenPosition(screen.width < 379, screen.getGuiLeft() + 151, screen.height / 2 - 79);
             else if(object instanceof ImageButton)
-            {
-                ((ImageButton)object).setPosition(guiLeft + 151, screen.height / 2 - 79);
-            }
+                ((ImageButton)object).setPosition(screen.getGuiLeft() + 151, screen.height / 2 - 79);
         }
+
+        //drawCurrencySlot(screen);
+    }
+
+    private void drawCurrencySlot(InventoryScreen screen)
+    {
+        screen.getMinecraft().textureManager.bindTexture(new ResourceLocation(Constants.MODID, "textures/gui/container/currencyslot.png"));
+        screen.blit(screen.getGuiLeft() + 100, screen.height / 2, 0, 0, 144, 11);
+    }
+
+    //Event to change the background
+    @OnlyIn(Dist.CLIENT)
+    @SubscribeEvent
+    public void guiBackground(GuiScreenEvent.InitGuiEvent.Post event)
+    {
+        if(!(event.getGui() instanceof InventoryScreen)) return;
+
+        InventoryScreen screen = (InventoryScreen)event.getGui();
+        screen.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(Constants.MODID, "textures/gui/container/currencyslot.png"));
+        screen.blit(screen.height/2, screen.width/2, 0 , 0, 72, 11);
     }
 
     //Event used to clone the current currency to the new one. If the event is not present, then it will start anew
