@@ -97,20 +97,20 @@ public class BlockInventoryFurnace extends ContainerBlock {
     // Called when the block is right clicked
     // In this block it is used to open the block gui when right clicked by a player
 
-    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult rayTraceResult) {
+    @Override
+    public ActionResultType func_225533_a_ (BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult rayTraceResult) {
         if (worldIn.isRemote) return ActionResultType.SUCCESS; // on client side, don't do anything
 
         INamedContainerProvider namedContainerProvider = this.getContainer(state, worldIn, pos);
         if (namedContainerProvider != null) {
-            if (!(player instanceof ServerPlayerEntity))
-                return ActionResultType.FAIL;  // should always be true, but just in case...
-            ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity) player;
-            NetworkHooks.openGui(serverPlayerEntity, namedContainerProvider, (packetBuffer) -> {
-            });
+            if (!(player instanceof ServerPlayerEntity)) return ActionResultType.FAIL;  // should always be true, but just in case...
+            ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)player;
+            NetworkHooks.openGui(serverPlayerEntity, namedContainerProvider, (packetBuffer)->{});
             // (packetBuffer)->{} is just a do-nothing because we have no extra data to send
         }
         return ActionResultType.SUCCESS;
     }
+
 
     // This is where you can do something when the block is broken. In this case drop the inventory's contents
     // Code is copied directly from vanilla eg ChestBlock, CampfireBlock
