@@ -1,5 +1,5 @@
 {
-  "parent": "stardewmod:block/furnace_model_0",
+  "parent": "stardewmod:block/furnace",
   "display": {
     "thirdperson": {
       "rotation": [ 10, -45, 170 ],

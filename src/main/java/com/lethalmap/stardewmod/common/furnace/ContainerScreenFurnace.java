@@ -19,19 +19,19 @@ public class ContainerScreenFurnace extends ContainerScreen<ContainerFurnace> {
 
         // Set the width and height of the gui.  Should match the size of the texture!
         xSize = 176;
-        ySize = 207;
+        ySize = 184;
     }
 
     // some [x,y] coordinates of graphical elements
     final int COOK_BAR_XPOS = 49;
-    final int COOK_BAR_YPOS = 60;
+    final int COOK_BAR_YPOS = 37;
     final int COOK_BAR_ICON_U = 0;   // texture position of white arrow icon [u,v]
-    final int COOK_BAR_ICON_V = 207;
+    final int COOK_BAR_ICON_V = 185;
     final int COOK_BAR_WIDTH = 80;
     final int COOK_BAR_HEIGHT = 17;
 
-    final int FLAME_XPOS = 54;
-    final int FLAME_YPOS = 80;
+    final int FLAME_XPOS = 82;
+    final int FLAME_YPOS = 57;
     final int FLAME_ICON_U = 176;   // texture position of flame icon [u,v]
     final int FLAME_ICON_V = 0;
     final int FLAME_WIDTH = 14;

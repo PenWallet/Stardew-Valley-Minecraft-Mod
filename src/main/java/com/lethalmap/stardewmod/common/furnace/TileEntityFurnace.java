@@ -28,9 +28,9 @@ import java.util.Optional;
 
 public class TileEntityFurnace extends TileEntity implements INamedContainerProvider, ITickableTileEntity {
 
-    public static final int FUEL_SLOTS_COUNT = 4;
-    public static final int INPUT_SLOTS_COUNT = 5;
-    public static final int OUTPUT_SLOTS_COUNT = 5;
+    public static final int FUEL_SLOTS_COUNT = 1;
+    public static final int INPUT_SLOTS_COUNT = 1;
+    public static final int OUTPUT_SLOTS_COUNT = 1;
     public static final int TOTAL_SLOTS_COUNT = FUEL_SLOTS_COUNT + INPUT_SLOTS_COUNT + OUTPUT_SLOTS_COUNT;
 
     private FurnaceZoneContents fuelZoneContents;
@@ -83,6 +83,16 @@ public class TileEntityFurnace extends TileEntity implements INamedContainerProv
         if (world.isRemote) return; // do nothing on client.
         ItemStack currentlySmeltingItem = getCurrentlySmeltingInputItem();
 
+        int numberOfFuelBurning = burnFuel();
+        if(numberOfFuelBurning>0){
+            BlockState currentBlockState = world.getBlockState(this.pos);
+            BlockState newBlockState = currentBlockState.with(BlockInventoryFurnace.LIT,true);
+            if (!newBlockState.equals(currentBlockState)) {
+                final int FLAGS = SetBlockStateFlag.get(SetBlockStateFlag.BLOCK_UPDATE, SetBlockStateFlag.SEND_TO_CLIENTS);
+                world.setBlockState(this.pos, newBlockState, FLAGS);
+                markDirty();
+            }
+        }
         // if user has changed the input slots, reset the smelting time
         if (!ItemStack.areItemsEqual(currentlySmeltingItem, currentlySmeltingItemLastTick)) {  // == and != don't work!
             furnaceStateData.cookTimeElapsed = 0;
@@ -90,11 +100,12 @@ public class TileEntityFurnace extends TileEntity implements INamedContainerProv
         currentlySmeltingItemLastTick = currentlySmeltingItem.copy();
 
         if (!currentlySmeltingItem.isEmpty()) {
-            int numberOfFuelBurning = burnFuel();
+            numberOfFuelBurning = burnFuel();
 
             // If fuel is available, keep cooking the item, otherwise start "uncooking" it at double speed
             if (numberOfFuelBurning > 0) {
                 furnaceStateData.cookTimeElapsed += numberOfFuelBurning;
+
             }	else {
                 furnaceStateData.cookTimeElapsed -= 2;
             }
@@ -109,6 +120,13 @@ public class TileEntityFurnace extends TileEntity implements INamedContainerProv
             }
         }	else {
             furnaceStateData.cookTimeElapsed = 0;
+            BlockState currentBlockState = world.getBlockState(this.pos);
+            BlockState newBlockState = currentBlockState.with(BlockInventoryFurnace.LIT,false);
+            if (!newBlockState.equals(currentBlockState)) {
+                final int FLAGS = SetBlockStateFlag.get(SetBlockStateFlag.BLOCK_UPDATE, SetBlockStateFlag.SEND_TO_CLIENTS);
+                world.setBlockState(this.pos, newBlockState, FLAGS);
+                markDirty();
+            }
         }
 
         // when the number of burning slots changes, we need to force the block to re-render, otherwise the change in
@@ -116,14 +134,7 @@ public class TileEntityFurnace extends TileEntity implements INamedContainerProv
         // The block update (for renderer) is only required on client side, but the lighting is required on both, since
         //    the client needs it for rendering and the server needs it for crop growth etc
         int numberBurning = numberOfBurningFuelSlots();
-        BlockState currentBlockState = world.getBlockState(this.pos);
-        BlockState newBlockState = currentBlockState.with(BlockInventoryFurnace.BURNING_SIDES_COUNT, numberBurning);
-        if (!newBlockState.equals(currentBlockState)) {
-            final int FLAGS = SetBlockStateFlag.get(SetBlockStateFlag.BLOCK_UPDATE, SetBlockStateFlag.SEND_TO_CLIENTS);
 
-            world.setBlockState(this.pos, newBlockState, FLAGS);
-            markDirty();
-        }
     }
 
     /**

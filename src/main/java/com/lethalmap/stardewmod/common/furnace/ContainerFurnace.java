@@ -53,6 +53,7 @@ public class ContainerFurnace extends Container {
     private static final int PLAYER_INVENTORY_SLOT_COUNT = PLAYER_INVENTORY_COLUMN_COUNT * PLAYER_INVENTORY_ROW_COUNT;
     private static final int VANILLA_SLOT_COUNT = HOTBAR_SLOT_COUNT + PLAYER_INVENTORY_SLOT_COUNT;
 
+
     public static final int FUEL_SLOTS_COUNT = TileEntityFurnace.FUEL_SLOTS_COUNT;
     public static final int INPUT_SLOTS_COUNT = TileEntityFurnace.INPUT_SLOTS_COUNT;
     public static final int OUTPUT_SLOTS_COUNT = TileEntityFurnace.OUTPUT_SLOTS_COUNT;
@@ -89,7 +90,7 @@ public class ContainerFurnace extends Container {
         final int SLOT_X_SPACING = 18;
         final int SLOT_Y_SPACING = 18;
         final int HOTBAR_XPOS = 8;
-        final int HOTBAR_YPOS = 183;
+        final int HOTBAR_YPOS = 161;
         // Add the players hotbar to the gui - the [xpos, ypos] location of each item
         for (int x = 0; x < HOTBAR_SLOT_COUNT; x++) {
             int slotNumber = x;
@@ -97,7 +98,7 @@ public class ContainerFurnace extends Container {
         }
 
         final int PLAYER_INVENTORY_XPOS = 8;
-        final int PLAYER_INVENTORY_YPOS = 125;
+        final int PLAYER_INVENTORY_YPOS = 103;
         // Add the rest of the players inventory to the gui
         for (int y = 0; y < PLAYER_INVENTORY_ROW_COUNT; y++) {
             for (int x = 0; x < PLAYER_INVENTORY_COLUMN_COUNT; x++) {
@@ -108,8 +109,8 @@ public class ContainerFurnace extends Container {
             }
         }
 
-        final int FUEL_SLOTS_XPOS = 53;
-        final int FUEL_SLOTS_YPOS = 96;
+        final int FUEL_SLOTS_XPOS = 80;
+        final int FUEL_SLOTS_YPOS = 74;
         // Add the tile fuel slots
         for (int x = 0; x < FUEL_SLOTS_COUNT; x++) {
             int slotNumber = x;
@@ -117,7 +118,7 @@ public class ContainerFurnace extends Container {
         }
 
         final int INPUT_SLOTS_XPOS = 26;
-        final int INPUT_SLOTS_YPOS = 24;
+        final int INPUT_SLOTS_YPOS = 38;
         // Add the tile input slots
         for (int y = 0; y < INPUT_SLOTS_COUNT; y++) {
             int slotNumber = y;
@@ -125,7 +126,7 @@ public class ContainerFurnace extends Container {
         }
 
         final int OUTPUT_SLOTS_XPOS = 134;
-        final int OUTPUT_SLOTS_YPOS = 24;
+        final int OUTPUT_SLOTS_YPOS = 38;
         // Add the tile output slots
         for (int y = 0; y < OUTPUT_SLOTS_COUNT; y++) {
             int slotNumber = y;
@@ -339,4 +340,5 @@ public class ContainerFurnace extends Container {
             throw new IndexOutOfBoundsException("Unexpected slotIndex");
         }
     }
+
 }
