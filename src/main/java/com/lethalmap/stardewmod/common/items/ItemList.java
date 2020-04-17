@@ -17,8 +17,9 @@ public class ItemList {
     public static Item worms;
 
     //Blocks
-    public static Item copperore;
     public static Item blockfurnaceitem;
+    public static Item shippingchest;
+    public static Item copperore;
     public static Item ironore;
     public static Item goldore;
     public static Item iridiumore;

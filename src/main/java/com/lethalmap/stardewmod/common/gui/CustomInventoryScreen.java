@@ -100,7 +100,7 @@ public class CustomInventoryScreen extends DisplayEffectsScreen<PlayerContainer>
         this.oldMouseX = (float)p_render_1_;
         this.oldMouseY = (float)p_render_2_;
         this.func_212932_b(this.recipeBookGui);
-        //this.font.drawString(this.minecraft.player.getCapability(CurrencyCapability.CURRENCY_CAPABILITY).orElseThrow(IllegalStateException::new).getAmount()+"g", this.guiLeft + 110, this.height / 2 - 13, 0xffae00);
+        //this.font.drawString(this.minecraft.player.getCapability(CurrencyCapability.CURRENCY_CAPABILITY).orElseThrow(IllegalStateException::new).getAmount()+"g", this.guiLeft + 110, this.height / 2 - 13, Constants.CURRENCYCOLOR);
         //StardewMod.CHANNEL.sendToServer(new C2SCurrencyPacket());
     }
 

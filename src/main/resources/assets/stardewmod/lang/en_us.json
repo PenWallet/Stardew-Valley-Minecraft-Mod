@@ -84,6 +84,7 @@
   "item.stardewmod.kale": "Kale",
   "item.stardewmod.rhubarb": "Rhubarb",
   "item.stardewmod.rhubarbseeds": "Rhubarb Seeds",
+  "item.stardewmod.shippingchest": "Shipping Chest",
 
   "block.stardewmod.copperore": "Copper Ore",
   "block.stardewmod.aquamarineore": "Aquamarine Ore",
@@ -100,6 +101,8 @@
   "block.stardewmod.beanstarter": "Bean Starter",
   "block.stardewmod.coffeebean": "Coffee Bean",
   "block.stardewmod.kale": "Kale",
+
+  "block.stardewmod.shippingchest": "Shipping Chest",
 
   "itemGroup.stardewmoditemgroup": "Stardew Mod",
   "itemGroup.stardewmodfooditemgroup": "Stardew Mod Food",
@@ -163,7 +166,6 @@
   "item.stardewmod.trilobite": "Trilobite",
 
 
-
   "item.stardewmod.svemerald": "Emerald",
   "item.stardewmod.aquamarine": "Aquamarine",
   "item.stardewmod.ruby": "Ruby",
@@ -192,5 +194,7 @@
   "advancements.stardewmod.artifactschallenge.title": "Artifacttastic",
   "advancements.stardewmod.artifactschallenge.description": "Gunther would be proud of you",
   "advancements.stardewmod.firstartifact.title": "What is this?",
-  "advancements.stardewmod.firstartifact.description": "Archeologically fantastic!"
+  "advancements.stardewmod.firstartifact.description": "Archeologically fantastic!",
+
+  "container.stardewmod.shippingchest": "Shipping chest"
 }

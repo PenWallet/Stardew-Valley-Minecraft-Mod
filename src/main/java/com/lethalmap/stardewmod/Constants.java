@@ -11,12 +11,18 @@ public class Constants {
     public static final ItemGroup SMSEEDSITEMGROUP = new StardewModSeedsItemGroup();
     public static final ItemGroup SMSSWORDSITEMGROUP = new StardewModSwordsItemGroup();
     public static final ItemGroup SMSGEMSITEMGROUP = new StardewModGemsItemGroup();
+    public static final int CURRENCYCOLOR = 0xffae00;
 
 
     //Furnace
     public static final String FURNACE = "furnace" ;
-    public static final String FURNACETILEENTITY = "furnacetileentity" ;
+    public static final String FURNACETILEENTITY = "furnacetileentity";
     public static final String FURNACECONTAINER = "furnacecontainer";
+
+    //SELLING CHEST
+    public static final String SHIPPINGCHEST = "shippingchest";
+    public static final String SHIPPINGCHESTTILEENTITY = "shippingchesttileentity";
+    public static final String SHIPPINGCHESTCONTAINER = "shippingchestcontainer";
 
     //IDs objects
     public static final String IRIDIUMINGOT = "iridiumingot";

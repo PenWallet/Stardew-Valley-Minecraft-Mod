@@ -11,16 +11,20 @@ import com.lethalmap.stardewmod.common.blocks.GoldOre;
 import com.lethalmap.stardewmod.common.blocks.IridiumOre;
 import com.lethalmap.stardewmod.common.blocks.IronOre;
 import com.lethalmap.stardewmod.common.blocks.Worms;
+import com.lethalmap.stardewmod.common.blocks.shippingchest.ShippingChestBlock;
+import com.lethalmap.stardewmod.common.blocks.shippingchest.ShippingChestContainer;
+import com.lethalmap.stardewmod.common.blocks.shippingchest.ShippingChestScreen;
+import com.lethalmap.stardewmod.common.blocks.shippingchest.TileEntitySellingChest;
 import com.lethalmap.stardewmod.common.capabilities.currency.CurrencyCapability;
 import com.lethalmap.stardewmod.common.capabilities.currency.ICurrency;
 import com.lethalmap.stardewmod.common.config.Config;
 import com.lethalmap.stardewmod.common.furnace.*;
-import com.lethalmap.stardewmod.common.gui.CustomInventoryScreen;
 import com.lethalmap.stardewmod.common.items.*;
 import com.lethalmap.stardewmod.common.items.artifacts.*;
 import com.lethalmap.stardewmod.common.items.dagger.CarvingKnife;
 import com.lethalmap.stardewmod.common.items.foods.*;
 import com.lethalmap.stardewmod.common.items.gems.*;
+import com.lethalmap.stardewmod.common.items.interactable.ShippingChest;
 import com.lethalmap.stardewmod.common.items.ores.*;
 import com.lethalmap.stardewmod.common.items.swords.*;
 import com.lethalmap.stardewmod.common.items.armors.CombatBoots;
@@ -30,18 +34,12 @@ import com.lethalmap.stardewmod.common.networking.S2CCurrencyPacket;
 import com.lethalmap.stardewmod.common.tiles.TileEntityList;
 import com.lethalmap.stardewmod.common.world.OreGeneration;
 import com.lethalmap.stardewmod.init.ModContainerTypes;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.datafixers.kinds.Const;
 import net.minecraft.block.Block;
-import net.minecraft.block.FurnaceBlock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.gui.recipebook.RecipeBookGui;
-import net.minecraft.client.gui.screen.inventory.FurnaceScreen;
 import net.minecraft.client.gui.screen.inventory.InventoryScreen;
 import net.minecraft.client.gui.widget.button.ImageButton;
-import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.entity.Entity;
@@ -66,7 +64,6 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.client.gui.GuiUtils;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -147,6 +144,7 @@ public class StardewMod {
         ModContainerTypes.registerScreens(event);
         EntitiesRegistry.registryEntityRenders();
         ScreenManager.registerFactory(TileEntityList.furnaceContainer, ContainerScreenFurnace::new);
+        ScreenManager.registerFactory(TileEntityList.shippingChestContainer, ShippingChestScreen::new);
     }
 
     //Event used to attach the currency to all players
@@ -173,7 +171,7 @@ public class StardewMod {
         if(!(event.getGui() instanceof InventoryScreen)) return;
 
         InventoryScreen screen = (InventoryScreen)event.getGui();
-        screen.getMinecraft().fontRenderer.drawString(CurrencyCapability.getAmountFromPlayer(Minecraft.getInstance().player)+"g", screen.getGuiLeft() + 110, screen.height / 2 - 13, 0xffae00);
+        screen.getMinecraft().fontRenderer.drawString(CurrencyCapability.getAmountFromPlayer(Minecraft.getInstance().player)+"g", screen.getGuiLeft() + 110, screen.height / 2 - 13, Constants.CURRENCYCOLOR);
 
         for(Object object : screen.children())
         {
@@ -297,7 +295,8 @@ public class StardewMod {
                     BlockList.coffeebean = new CoffeeBeanBlock(),
                     BlockList.kale = new KaleBlock(),
                     BlockList.rhubarb = new RhubarbBlock(),
-                    BlockList.blockfurnace = new BlockInventoryFurnace()
+                    BlockList.blockfurnace = new BlockInventoryFurnace(),
+                    BlockList.shippingchest = new ShippingChestBlock()
 
             );
         }
@@ -306,6 +305,7 @@ public class StardewMod {
         @SubscribeEvent
         public static void onItemsRegistry(final RegistryEvent.Register<Item> itemRegistryEvent) {
             itemRegistryEvent.getRegistry().registerAll(
+                    ItemList.shippingchest = new ShippingChest(),
                     ItemList.copperingot = new CopperIngot(),
                     ItemList.blockfurnaceitem = new FurnaceBlockItem(),
                     ItemList.copperore = new com.lethalmap.stardewmod.common.items.ores.CopperOre(),
@@ -449,19 +449,35 @@ public class StardewMod {
 
         @SubscribeEvent
         public static void onTileEntityTypeRegistration(final RegistryEvent.Register<TileEntityType<?>> event) {
-            TileEntityList.furnaceTile = TileEntityType.Builder.create(TileEntityFurnace::new, BlockList.blockfurnace)
-                    .build(null);
-            // you probably don't need a datafixer --> null should be fine
+            //Custom furnace
+            TileEntityList.furnaceTile = TileEntityType.Builder.create(TileEntityFurnace::new, BlockList.blockfurnace).build(null);
             TileEntityList.furnaceTile.setRegistryName(Constants.MODID, Constants.FURNACETILEENTITY);
-            event.getRegistry().register(TileEntityList.furnaceTile);
+
+            //Selling chest
+            TileEntityList.shippingChestTile = TileEntityType.Builder.create(TileEntitySellingChest::new, BlockList.shippingchest).build(null);
+            TileEntityList.shippingChestTile.setRegistryName(Constants.MODID, Constants.SHIPPINGCHESTTILEENTITY);
+
+            event.getRegistry().registerAll(
+                    TileEntityList.furnaceTile,
+                    TileEntityList.shippingChestTile
+            );
         }
 
         @SubscribeEvent
         public static void registerContainers(final RegistryEvent.Register<ContainerType<?>> event)
         {
+            //Custom furnace
             TileEntityList.furnaceContainer = IForgeContainerType.create(ContainerFurnace::createContainerClientSide);
             TileEntityList.furnaceContainer.setRegistryName(Constants.MODID, Constants.FURNACECONTAINER);
-            event.getRegistry().register(TileEntityList.furnaceContainer);
+
+            //Selling chest
+            TileEntityList.shippingChestContainer = IForgeContainerType.create(ShippingChestContainer::createContainerClientSide);
+            TileEntityList.shippingChestContainer.setRegistryName(Constants.MODID, Constants.SHIPPINGCHESTCONTAINER);
+
+            event.getRegistry().registerAll(
+                    TileEntityList.furnaceContainer,
+                    TileEntityList.shippingChestContainer
+            );
         }
     }
 }
