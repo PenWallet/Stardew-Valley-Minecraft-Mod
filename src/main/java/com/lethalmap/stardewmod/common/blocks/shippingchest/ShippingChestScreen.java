@@ -71,10 +71,6 @@ public class ShippingChestScreen extends ContainerScreen<ShippingChestContainer>
         int edgeSpacingX = (this.width - this.xSize) / 2;
         int edgeSpacingY = (this.height - this.ySize) / 2;
         this.blit(edgeSpacingX, edgeSpacingY, 0, 0, this.xSize, this.ySize);
-
-
-        //this.font.drawString(this.minecraft.player.getCapability(CurrencyCapability.CURRENCY_CAPABILITY).orElseThrow(IllegalStateException::new).getAmount()+"g", this.guiLeft, this.height, Constants.CURRENCYCOLOR);
-
     }
 
     // This is the resource location for the background image for the GUI

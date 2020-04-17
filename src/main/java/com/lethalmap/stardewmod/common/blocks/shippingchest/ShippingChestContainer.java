@@ -10,6 +10,7 @@ import com.lethalmap.stardewmod.common.tiles.TileEntityList;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.inventory.container.ClickType;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
@@ -18,6 +19,8 @@ import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.wrapper.PlayerInvWrapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import javax.annotation.Nonnull;
 
 /**
  * User: brandon3055
@@ -115,7 +118,15 @@ public class ShippingChestContainer extends Container {
         final int TILE_INVENTORY_XPOS = 8;
 
         // Add the tile inventory container to the gui
-        addSlot(new Slot(chestContents, 0, TILE_INVENTORY_XPOS + SLOT_X_SPACING * 4, TILE_INVENTORY_YPOS));
+        addSlot(new Slot(chestContents, 0, TILE_INVENTORY_XPOS + SLOT_X_SPACING * 4, TILE_INVENTORY_YPOS) {
+            @Override
+            public boolean isItemValid(ItemStack stack) {
+                if(stack.getItem() instanceof IStardewItem && ((IStardewItem) stack.getItem()).canBeSold())
+                    return true;
+
+                return false;
+            }
+        });
     }
 
     // Vanilla calls this method every tick to make sure the player is still able to access the inventory, and if not closes the gui
@@ -150,9 +161,9 @@ public class ShippingChestContainer extends Container {
         ItemStack sourceStack = sourceSlot.getStack();
         ItemStack copyOfSourceStack = sourceStack.copy();
 
-        //TODO: Peta si das click derecho a un item que no es IStardewItem
         //If the user clicked on a vanilla slot
         if (sourceSlotIndex >= VANILLA_FIRST_SLOT_INDEX && sourceSlotIndex < VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT) {
+            //If the item he clicked can be sold
             if(sourceStack.getItem() instanceof IStardewItem && ((IStardewItem)sourceStack.getItem()).canBeSold())
             {
                 Slot slotInside = inventorySlots.get(TE_INVENTORY_FIRST_SLOT_INDEX);
@@ -163,7 +174,7 @@ public class ShippingChestContainer extends Container {
                     //Get the stack we're going to sell
                     ItemStack stackInside = slotInside.getStack();
 
-                    //Double check, just in case
+                    //Check the item inside our slot, just in case
                     if(stackInside.getItem() instanceof IStardewItem && ((IStardewItem)stackInside.getItem()).canBeSold())
                     {
                         if(!playerEntity.world.isRemote)
@@ -178,20 +189,21 @@ public class ShippingChestContainer extends Container {
                         slotInside.putStack(copyOfSourceStack);
                         return copyOfSourceStack;
                     }
-                    else
+                    else //If the user managed to get something not sellable in our slot, then just return, instead of crashing the game, that's nice
                         return ItemStack.EMPTY;
                 }
                 else
                 {
+                    //If there is no stack in our slot, then just move it there
                     sourceSlot.putStack(ItemStack.EMPTY);
                     slotInside.putStack(copyOfSourceStack);
                     return copyOfSourceStack;
                 }
             }
-            else
+            else //If it can't, return empty
                 return ItemStack.EMPTY;
         } else if (sourceSlotIndex >= TE_INVENTORY_FIRST_SLOT_INDEX && sourceSlotIndex < TE_INVENTORY_FIRST_SLOT_INDEX + TE_INVENTORY_SLOT_COUNT) { //The user clicked on our slots
-            // This is a TE slot so merge the stack into the players inventory
+            //Merge stack
             if (!mergeItemStack(sourceStack, VANILLA_FIRST_SLOT_INDEX, VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT, false)) {
                 return ItemStack.EMPTY;
             }
@@ -204,7 +216,41 @@ public class ShippingChestContainer extends Container {
         return copyOfSourceStack;
     }
 
+    //We're only going to allow the user to interact with our items in this window
+    @Override
+    public ItemStack slotClick(int slotId, int dragType, ClickType clickTypeIn, PlayerEntity player) {
 
+        if(slotId == TE_INVENTORY_FIRST_SLOT_INDEX && !player.inventory.getItemStack().isEmpty())
+        {
+            Slot sellSlot = this.inventorySlots.get(TE_INVENTORY_FIRST_SLOT_INDEX);
+            ItemStack sellStack = sellSlot.getStack();
+            ItemStack inHandStack = player.inventory.getItemStack();
+
+            //If the user clicked on the slot with a sellable item
+            if(inHandStack.getItem() instanceof IStardewItem && ((IStardewItem) inHandStack.getItem()).canBeSold())
+            {
+                //If the user clicked on the slot with a sellable item AND if there's something on the slot, sell that item
+                if(sellSlot.getHasStack())
+                {
+                    //Sell the item only on server side
+                    if(!player.world.isRemote)
+                    {
+                        //Give the correct amount to the user
+                        ICurrency currency = player.getCapability(CurrencyCapability.CURRENCY_CAPABILITY).orElseThrow(IllegalStateException::new);
+                        currency.addOrSubtractAmount(sellStack.getTag().getInt(Constants.SELLINGPRICE) * sellStack.getCount());
+                        StardewMod.CHANNEL.send(PacketDistributor.PLAYER.with(() -> (ServerPlayerEntity)player), new S2CCurrencyPacket(currency.getAmount()));
+                    }
+
+                    //Empty the sell slot stack, since it's sold
+                    sellSlot.putStack(ItemStack.EMPTY);
+                }
+            }
+            else
+                return ItemStack.EMPTY;
+        }
+
+        return super.slotClick(slotId, dragType, clickTypeIn, player);
+    }
 
     // pass the close container message to the parent inventory (not strictly needed for this example)
     //  see ContainerChest and TileEntityChest - used to animate the lid when no players are accessing the chest any more
